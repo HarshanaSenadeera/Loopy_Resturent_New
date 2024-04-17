@@ -45,6 +45,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    /*search bar colour*/
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -201,10 +202,7 @@ export default function NavBarTop() {
                         />
                     </Search>
 
-
-                    <div>
-
-                    </div>
+                    {/*Call date and time*/}
                     <Stack direction={"row"} spacing={2}>
                         <p>{currentDateTime.toDateString()}</p>
                         <p>{currentDateTime.toLocaleTimeString()}</p>
