@@ -1,0 +1,12 @@
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.pop-up-image {
+    transition: transform 0.3s ease; /* Add transition for transform property */
+}
+
+.img-container:hover .pop-up-image {
+    transform: scale(1.1); /* Scale up slightly on hover */
+}
