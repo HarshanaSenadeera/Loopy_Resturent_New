@@ -17,6 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {useEffect, useState} from "react";
 import {Stack} from "@mui/material";
+import MiniDrawer from "../drawer/Drawer";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -61,8 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function NavBarTop() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-        React.useState<null | HTMLElement>(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -184,6 +184,7 @@ export default function NavBarTop() {
                     >
                         <MenuIcon/>
                     </IconButton>
+
                     <Typography
                         variant="h6"
                         noWrap
