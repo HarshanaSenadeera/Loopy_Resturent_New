@@ -102,7 +102,7 @@ export default function ResponsiveDrawer(props: Props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {['Dashboard', 'Dishes', 'Byers', 'Invoices', 'Reports', 'Tables'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -115,7 +115,7 @@ export default function ResponsiveDrawer(props: Props) {
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Settings', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
