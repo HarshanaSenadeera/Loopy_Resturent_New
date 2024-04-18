@@ -15,9 +15,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import {useEffect, useState} from "react";
-import {Stack} from "@mui/material";
-import MiniDrawer from "../drawer/Drawer";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -46,7 +43,6 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    /*search bar colour*/
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -60,9 +56,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function NavBarTop() {
+export default function PrimarySearchAppBar() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
+        React.useState<null | HTMLElement>(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -105,19 +102,6 @@ export default function NavBarTop() {
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
     );
-
-    /*Date and Time*/
-    const [currentDateTime, setCurrentDateTime] = useState(new Date());
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDateTime(new Date());
-        }, 1000); // Update every second
-
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, []);
-
-
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     const renderMobileMenu = (
@@ -180,40 +164,32 @@ export default function NavBarTop() {
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
-                        sx={{mr: 2}}
+                        sx={{ mr: 2 }}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
-
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{display: {xs: 'none', sm: 'block'}}}
+                        sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        Loopy POS system
+                        MUI
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
-                            <SearchIcon/>
+                            <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search…"
-                            inputProps={{'aria-label': 'search'}}
+                            inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-
-                    {/*Call date and time*/}
-                    <Stack direction={"row"} spacing={2}>
-                        <p>{currentDateTime.toDateString()}</p>
-                        <p>{currentDateTime.toLocaleTimeString()}</p>
-                    </Stack>
-
-                    <Box sx={{flexGrow: 1}}/>
-                    <Box sx={{display: {xs: 'none', md: 'flex'}}}>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
-                                <MailIcon/>
+                                <MailIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -222,7 +198,7 @@ export default function NavBarTop() {
                             color="inherit"
                         >
                             <Badge badgeContent={17} color="error">
-                                <NotificationsIcon/>
+                                <NotificationsIcon />
                             </Badge>
                         </IconButton>
                         <IconButton
@@ -234,10 +210,10 @@ export default function NavBarTop() {
                             onClick={handleProfileMenuOpen}
                             color="inherit"
                         >
-                            <AccountCircle/>
+                            <AccountCircle />
                         </IconButton>
                     </Box>
-                    <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
                             aria-label="show more"
@@ -246,7 +222,7 @@ export default function NavBarTop() {
                             onClick={handleMobileMenuOpen}
                             color="inherit"
                         >
-                            <MoreIcon/>
+                            <MoreIcon />
                         </IconButton>
                     </Box>
                 </Toolbar>
