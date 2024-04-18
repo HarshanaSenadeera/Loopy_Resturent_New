@@ -13,7 +13,7 @@ import Box from "@mui/material/Box";
 export default function ImgMediaCard() {
     return (
 
-        <Grid container spacing={2} columns={15} justifyContent={"space-around"} >
+        <Grid container spacing={2}  justifyContent={"space-around"}  columns={{ xs: 2, md: 15 ,sm:2}}  >
             <Grid item xs={5}>
                 <Card sx={{ maxWidth: 345 }}>
                     <div className="img-container">
