@@ -28,7 +28,9 @@ import {MainContext} from "../../Common/MainContext/MainContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import {MenuBook, Receipt, SupportAgent, TableBar, WavingHand} from "@mui/icons-material";
 import {Assessment, Settings} from "@material-ui/icons";
-
+import Link from "@mui/material/Link";
+import ImgMediaCard from "../dishes/dishes";
+import SignIn from "../loging/loging";
 const drawerWidth = 240;
 
 interface Props {
@@ -38,46 +40,8 @@ interface Props {
      */
     window?: () => Window;
 }
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    /*search bar colour*/
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-}));
 
 export default function ResponsiveDrawer(props: Props) {
     const { window } = props;
@@ -106,10 +70,10 @@ export default function ResponsiveDrawer(props: Props) {
             <Divider />
             <List>
                 {['Dashboard', 'Dishes', 'Byers', 'Invoices', 'Reports', 'Tables'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
+                    <ListItem key={text} disablePadding >
                         <ListItemButton>
                             <ListItemIcon>
-                                {index === 0 ? <DashboardIcon /> : index === 1 ? <MenuBook /> : index === 2 ? <SupportAgent/> :
+                                {index === 0 ? <DashboardIcon />  : index === 1 ? <MenuBook />  : index === 2 ? <SupportAgent/> :
                                     index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />}
                             </ListItemIcon>
                             <ListItemText primary={text} />

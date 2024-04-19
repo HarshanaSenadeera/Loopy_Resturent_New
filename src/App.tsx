@@ -7,6 +7,7 @@ import ImgMediaCard from "./componenet/dishes/dishes";
 import {DefaultLayout} from "./Common/Default Layout/DefaultLayout";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
+
 function App() {
   return (
       <>

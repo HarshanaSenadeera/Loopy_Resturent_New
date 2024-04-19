@@ -1,4 +1,4 @@
-import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
 
 export const DashMain = () => {
     return (
