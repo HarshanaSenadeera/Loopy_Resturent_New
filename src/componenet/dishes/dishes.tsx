@@ -11,35 +11,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 export default function ImgMediaCard() {
-    return (
 
-        <Grid container spacing={2}  justifyContent={"space-around"}  columns={{ xs: 2, md: 15 ,sm:2}}  >
-            <Grid item xs={5}>
-                <Card sx={{ maxWidth: 345 }}>
-                    <div className="img-container">
-                        <CardMedia
-                            component="img"
-                            alt="green iguana"
-                            height="140"
-                            image={pic}
-                            className="pop-up-image"
-                        />
-                    </div>
-                    <CardContent sx={{ textAlign: 'center'}}>
-                        <Typography variant="h5" gutterBottom>
-                            Cold Dishes
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-                        </Typography>
-                    </CardContent>
-                    <CardActions sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" color="error">
-                            View More
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Grid>
+    return (
+        <Grid container spacing={2}   columns={{ xs: 2, md: 15 ,sm:2}}>
             <Grid item xs={5}>
                 <Card sx={{ maxWidth: 345 }}>
                     <div className="img-container">
@@ -105,7 +79,7 @@ export default function ImgMediaCard() {
                     </div>
                     <CardContent sx={{ textAlign: 'center'}}>
                         <Typography variant="h5" gutterBottom>
-                            Meat Dishes
+                            Soup Dishes
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
@@ -131,7 +105,7 @@ export default function ImgMediaCard() {
                     </div>
                     <CardContent sx={{ textAlign: 'center'}}>
                         <Typography variant="h5" gutterBottom>
-                            Salerd Dishes
+                            Soup Dishes
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
@@ -157,7 +131,7 @@ export default function ImgMediaCard() {
                     </div>
                     <CardContent sx={{ textAlign: 'center'}}>
                         <Typography variant="h5" gutterBottom>
-                            Spicy Dishes
+                            Soup Dishes
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
@@ -183,59 +157,7 @@ export default function ImgMediaCard() {
                     </div>
                     <CardContent sx={{ textAlign: 'center'}}>
                         <Typography variant="h5" gutterBottom>
-                            Gold Dishes
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-                        </Typography>
-                    </CardContent>
-                    <CardActions sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" color="error">
-                            View More
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Grid>
-            <Grid item xs={5}>
-                <Card sx={{ maxWidth: 345 }}>
-                    <div className="img-container">
-                        <CardMedia
-                            component="img"
-                            alt="green iguana"
-                            height="140"
-                            image={pic}
-                            className="pop-up-image"
-                        />
-                    </div>
-                    <CardContent sx={{ textAlign: 'center'}}>
-                        <Typography variant="h5" gutterBottom>
-                            Push Dishes
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
-                        </Typography>
-                    </CardContent>
-                    <CardActions sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" color="error">
-                            View More
-                        </Button>
-                    </CardActions>
-                </Card>
-            </Grid>
-            <Grid item xs={5}>
-                <Card sx={{ maxWidth: 345 }}>
-                    <div className="img-container">
-                        <CardMedia
-                            component="img"
-                            alt="green iguana"
-                            height="140"
-                            image={pic}
-                            className="pop-up-image"
-                        />
-                    </div>
-                    <CardContent sx={{ textAlign: 'center'}}>
-                        <Typography variant="h5" gutterBottom>
-                            Cold Dishes
+                            Soup Dishes
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
