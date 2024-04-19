@@ -25,6 +25,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import {MainContext} from "../../Common/MainContext/MainContext";
+import {Stack} from "@mui/material";
+import {Restaurant} from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -256,8 +258,13 @@ export default function ResponsiveDrawer(props: Props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                    <Stack>
+                        <Restaurant  />
+
+                    </Stack>
+                    <Typography variant="h6" noWrap component="div" >
+
+                        Restaurant
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

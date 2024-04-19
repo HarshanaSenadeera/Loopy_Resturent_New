@@ -60,7 +60,7 @@ function FormRow() {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" color="success">
+                        <Button variant="contained"  color="error">
                             View More
                         </Button>
                     </CardActions>
@@ -86,13 +86,12 @@ function FormRow() {
                         </Typography>
                     </CardContent>
                     <CardActions sx={{ justifyContent: 'center' }}>
-                        <Button variant="contained" color="success">
+                        <Button variant="contained"  color="error">
                             View More
                         </Button>
                     </CardActions>
                 </Card>
             </Grid>
-
         </React.Fragment>
     );
 }
@@ -101,7 +100,7 @@ export default function ImgMediaCard() {
     return (
 
         <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={1}>
+            <Grid container spacing={5}>
                 <Grid container item spacing={3}>
                     <FormRow />
                 </Grid>
@@ -111,7 +110,6 @@ export default function ImgMediaCard() {
                 <Grid container item spacing={3}>
                     <FormRow />
                 </Grid>
-
             </Grid>
         </Box>
 
