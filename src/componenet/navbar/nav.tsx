@@ -25,8 +25,9 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import {MainContext} from "../../Common/MainContext/MainContext";
-import {Stack} from "@mui/material";
-import {Restaurant} from "@material-ui/icons";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import {MenuBook, Receipt, SupportAgent, TableBar, WavingHand} from "@mui/icons-material";
+import {Assessment, Settings} from "@material-ui/icons";
 
 const drawerWidth = 240;
 
@@ -104,11 +105,12 @@ export default function ResponsiveDrawer(props: Props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {['Dashboard', 'Dishes', 'Byers', 'Invoices', 'Reports', 'Tables'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index === 0 ? <DashboardIcon /> : index === 1 ? <MenuBook /> : index === 2 ? <SupportAgent/> :
+                                    index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -117,11 +119,11 @@ export default function ResponsiveDrawer(props: Props) {
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Settings', 'Trash', 'Spam'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index === 0 ? <Settings /> : <MailIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -258,13 +260,8 @@ export default function ResponsiveDrawer(props: Props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Stack>
-                        <Restaurant  />
-
-                    </Stack>
-                    <Typography variant="h6" noWrap component="div" >
-
-                        Restaurant
+                    <Typography variant="h6" noWrap component="div">
+                        Responsive drawer
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
