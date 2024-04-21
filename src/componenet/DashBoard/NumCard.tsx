@@ -28,7 +28,7 @@ export default function ResponsiveGrid() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={4}>
-                    <Card sx={{height:150}}>
+                    <Card sx={{height:200,borderRadius:5}}>
                         <CardHeader sx={{bgcolor:'#ff9c00'}}
                                     title="Available Tables"
                                     titleTypographyProps={{variant:'h6',color:'#ffffff'}}
@@ -44,8 +44,9 @@ export default function ResponsiveGrid() {
                                 style={{
                                     color: "#3c3c3c",
                                     textAlign: "center",
-                                    fontSize: "2rem", // Adjust the size as needed
+                                    fontSize: "3rem", // Adjust the size as needed
                                     fontWeight: "bold",
+
                                 }}
                             >
                                 000
@@ -59,7 +60,7 @@ export default function ResponsiveGrid() {
                     </Card>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card sx={{height:150}}>
+                    <Card sx={{height:200,borderRadius:5}}>
                         <CardHeader sx={{bgcolor:'#ff9c00'}}
                                     title="Num Of Kichen Order"
                                     titleTypographyProps={{variant:'h6',color:'#ffffff'}}
@@ -75,7 +76,7 @@ export default function ResponsiveGrid() {
                                 style={{
                                     color: "#3c3c3c",
                                     textAlign: "center",
-                                    fontSize: "2rem", // Adjust the size as needed
+                                    fontSize: "3rem", // Adjust the size as needed
                                     fontWeight: "bold",
                                 }}
                             >
@@ -90,7 +91,7 @@ export default function ResponsiveGrid() {
                     </Card>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card sx={{height:150}}>
+                    <Card sx={{height:200,borderRadius:5}}>
                         <CardHeader sx={{bgcolor:'#ff9c00'}}
                                     title="Num of Bottle Order"
                                     titleTypographyProps={{variant:'h6',color:'#ffffff'}}
@@ -106,7 +107,7 @@ export default function ResponsiveGrid() {
                                 style={{
                                     color: "#3c3c3c",
                                     textAlign: "center",
-                                    fontSize: "2rem", // Adjust the size as needed
+                                    fontSize: "3rem", // Adjust the size as needed
                                     fontWeight: "bold",
                                 }}
                             >
