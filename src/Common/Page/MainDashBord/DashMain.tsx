@@ -1,5 +1,5 @@
-import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
-import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";
+/*import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";*/
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { styled } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
 
 export const DashMain = () => {
     return (
-        <Grid container rowSpacing={5}>
+        /*<Grid container rowSpacing={5}>
             <Grid item xs={12}>
                 <ResponsiveGrid/>
             </Grid>
@@ -20,7 +20,10 @@ export const DashMain = () => {
                 <MainPieChart/>
             </Grid>
 
-        </Grid>
+        </Grid>*/
+
+        <>
+        </>
 
 
 

@@ -7,8 +7,11 @@ import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ArrowDown as ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { ArrowUp as ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
-import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
 
 export interface DailyIncomeProps {
   diff?: number;
@@ -16,6 +19,11 @@ export interface DailyIncomeProps {
   sx?: SxProps;
   value: string;
 }
+
+const states = [
+  { value: 'Male', label: 'Male' },
+  { value: 'Fe-male', label: 'Fe-male' },
+] as const;
 
 export function DailyIncome({ diff, trend, sx, value }: DailyIncomeProps): React.JSX.Element {
   const TrendIcon = trend === 'up' ? ArrowUpIcon : ArrowDownIcon;
@@ -47,6 +55,20 @@ export function DailyIncome({ diff, trend, sx, value }: DailyIncomeProps): React
                   <Typography color="text.secondary" variant="caption">
                     Since last month
                   </Typography>
+
+                  {/*<Typography>
+                    <FormControl fullWidth >
+                      <InputLabel>Month</InputLabel>
+                      <Select defaultValue="Male" label="State" name="state" variant="outlined">
+                        {states.map((option) => (
+                            <MenuItem key={option.value} value={option.value}>
+                              {option.label}
+                            </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Typography>*/}
+
                 </Stack>
             ) : null}
           </Stack>
