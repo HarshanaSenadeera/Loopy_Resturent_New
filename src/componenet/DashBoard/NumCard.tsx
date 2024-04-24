@@ -1,31 +1,22 @@
-import * as React from 'react';
-import { experimentalStyled as styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import React from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import {CardHeader} from "@mui/material";
-import Avatar from '@mui/material/Avatar';
-import { red ,blueGrey} from '@mui/material/colors';
-import { grey } from '@mui/material/colors';
-import TextField from "@mui/material/TextField";
-import CardContent from "@mui/material/CardContent";
+import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import TableBarIcon from '@mui/icons-material/TableBar';
-import {Liquor, TableBar ,OutdoorGrill} from '@mui/icons-material';
+import CardContent from "@mui/material/CardContent";
+import {Liquor, OutdoorGrill, TableBar} from "@mui/icons-material";
+import {red} from "@mui/material/colors";
+import {styled} from "@mui/system";
+import Paper from "@mui/material/Paper";
 
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
 
 export default function ResponsiveGrid() {
     return (
-       /* <Box sx={{ flexGrow: 1 }}>
+        <>
+             <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={4}>
                     <Card sx={{height:200,borderRadius:5}}>
@@ -123,9 +114,7 @@ export default function ResponsiveGrid() {
                 </Grid>
 
             </Grid>
-        </Box>*/
-
-        <>
+        </Box>
 
         </>
     );

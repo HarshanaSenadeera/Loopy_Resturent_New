@@ -28,9 +28,11 @@ import {MainContext} from "../../Common/MainContext/MainContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import {MenuBook, Receipt, SupportAgent, TableBar, WavingHand} from "@mui/icons-material";
 import {Assessment, Settings} from "@material-ui/icons";
-import Link from "@mui/material/Link";
 import ImgMediaCard from "../dishes/dishes";
+import { Link } from 'react-router-dom';
+
 import SignIn from "../loging/loging";
+import MainNavigation from "./MainNavigation";
 const drawerWidth = 240;
 
 interface Props {
@@ -66,37 +68,9 @@ export default function ResponsiveDrawer(props: Props) {
 
     const drawer = (
         <div>
-            <Toolbar />
-            <Divider />
-            <List>
-                {['Dashboard', 'Dishes', 'Byers', 'Invoices', 'Reports', 'Tables'].map((text, index) => (
-                    <ListItem key={text} disablePadding >
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index === 0 ? <DashboardIcon />  : index === 1 ? <MenuBook />  : index === 2 ? <SupportAgent/> :
-                                    index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['Settings', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index === 0 ? <Settings /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
+            <MainNavigation />
         </div>
     );
-
     // Remove this const when copying and pasting into your project.
     const container = window !== undefined ? () => window().document.body : undefined;
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -276,7 +250,7 @@ export default function ResponsiveDrawer(props: Props) {
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
                     container={container}
-                    variant="temporary"
+                    variant="permanent"
                     open={mobileOpen}
                     onTransitionEnd={handleDrawerTransitionEnd}
                     onClose={handleDrawerClose}

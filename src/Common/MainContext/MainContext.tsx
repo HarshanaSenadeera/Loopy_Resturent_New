@@ -7,16 +7,22 @@ import dishes from "../../componenet/dishes/dishes";
 import user from "../../componenet/userDetails/user"
 import ReportMain from "../MainReports/Report";
 import {Byers} from "../../componenet/Byers/Byer";
+import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
 
 export const MainContext = () => {
     return (
         <div>
             <Routes>
+{/*
                 <Route path="/" Component={DashMain}></Route>
+*/}
+                <Route path="/" Component={HotDishes}></Route>
+
                 <Route path="/dish" Component={dishes}></Route>
                 <Route path="/user" Component={user}></Route>
                 <Route path="/report" Component={ReportMain}></Route>
                 <Route path="/byer" Component={Byers}></Route>
+                <Route path="/hotDish" Component={HotDishes}></Route>
             </Routes>
         </div>
     );

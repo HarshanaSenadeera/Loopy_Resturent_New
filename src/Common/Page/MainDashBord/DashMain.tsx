@@ -6,10 +6,12 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
+import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";
 
 export const DashMain = () => {
     return (
-        /*<Grid container rowSpacing={5}>
+        <Grid container rowSpacing={5}>
             <Grid item xs={12}>
                 <ResponsiveGrid/>
             </Grid>
@@ -20,10 +22,9 @@ export const DashMain = () => {
                 <MainPieChart/>
             </Grid>
 
-        </Grid>*/
+        </Grid>
 
-        <>
-        </>
+
 
 
 

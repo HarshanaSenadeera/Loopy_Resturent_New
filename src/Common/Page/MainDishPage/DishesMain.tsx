@@ -8,9 +8,9 @@ export const DishesMain = () => {
     const drawerWidth = 240;
 
     return (
-          /*  <ImgMediaCard/>*/
 
         <>
+            <ImgMediaCard/>
 
         </>
 

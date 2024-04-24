@@ -171,11 +171,6 @@ export default function ImgMediaCard() {
                 </Card>
             </Grid>
         </Grid>
-
-
-
-
-
     );
 
 }
