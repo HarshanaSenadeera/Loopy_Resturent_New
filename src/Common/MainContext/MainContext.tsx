@@ -8,17 +8,15 @@ import user from "../../componenet/userDetails/user"
 import ReportMain from "../MainReports/Report";
 import {Byers} from "../../componenet/Byers/Byer";
 import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
-import DisNew from "../../componenet/dishesNew/DisNew";
+import ButtonBaseDemo from "../../componenet/dishesNew/DisNew";
 
 export const MainContext = () => {
     return (
         <div>
             <Routes>
-{/*
+
                 <Route path="/" Component={DashMain}></Route>
-*/}
-                <Route path="/" Component={HotDishes}></Route>
-                <Route path="/dish" Component={DisNew}></Route>
+                <Route path="/dish" Component={ButtonBaseDemo}></Route>
                 <Route path="/user" Component={user}></Route>
                 <Route path="/report" Component={ReportMain}></Route>
                 <Route path="/byer" Component={Byers}></Route>

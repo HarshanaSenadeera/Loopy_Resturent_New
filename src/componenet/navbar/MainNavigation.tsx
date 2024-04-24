@@ -23,7 +23,8 @@ const ListItemWithLink: React.FC<ListItemWithLinkProps> = ({ to, icon, text }) =
     <ListItem disablePadding component={Link} to={to}>
         <ListItemButton>
             <ListItemIcon>{icon}</ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={text} sx={{color:'#606060'}}  />
+
         </ListItemButton>
     </ListItem>
 );

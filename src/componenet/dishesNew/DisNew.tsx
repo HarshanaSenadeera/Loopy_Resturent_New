@@ -12,6 +12,7 @@ import Croissant from  "../../images/Croissant.jpg";
 import Tacos from "../../images/Tortilla.jpg";
 import Ramen from "../../images/Ramen.jpg";
 import Berger from "../../images/burger-with-melted-cheese.jpg";
+import {Link, To} from "react-router-dom";
 
 
 const images = [
@@ -19,48 +20,66 @@ const images = [
     url: hot,
     title: 'Hot Dishes',
     width: '33.33%',
+    link:'/hotDish'
   },
   {
     url: soup,
     title: 'Soup Dishes',
     width: '33.33%',
+    link:'/hotDish'
+
+
   },
   {
     url: pizza,
     title: 'pizza',
     width: '33.33%',
+    link:'/hotDish'
+
   },
 
   {
     url: Tortilla,
     title: 'Tortilla',
     width: '33.33%',
+    link:'/hotDish'
+
   },
   {
     url: Yakiniku,
     title: 'Yakiniku',
     width: '33.33%',
+    link:'/hotDish'
+
   },
   {
     url: Croissant,
     title: 'Croissant',
     width: '33.33%',
+    link:'/hotDish'
+
   },
 
   {
     url: Tacos,
     title: 'Tacos',
     width: '33.33%',
+    link:'/hotDish'
+
   },
   {
     url: Ramen,
     title: 'Soup Dishes',
     width: '33.33%',
+    link:'/hotDish'
+
   },
   {
     url: Berger,
     title: 'Berger',
     width: '33.33%',
+    link:'/hotDish'
+
   },
 ];
 
@@ -140,15 +159,15 @@ export default function ButtonBaseDemo() {
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
       {images.map((image) => (
-        <ImageButton
 
+          <ImageButton
           focusRipple
           key={image.title}
           style={{
             width: image.width,
           }}
         >
-          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+          <ImageSrc  style={{ backgroundImage: `url(${image.url})` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
@@ -162,11 +181,15 @@ export default function ButtonBaseDemo() {
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
               }}
             >
+              <Link to={image.link} style={{fontSize:'20px' ,fontWeight:'bold',color:'white'}}>
               {image.title}
+              </Link>
               <ImageMarked className="MuiImageMarked-root" />
             </Typography>
           </Image>
+
         </ImageButton>
+
       ))}
     </Box>
   );
