@@ -14,6 +14,7 @@ import {Visibility} from "@mui/icons-material";
 
 import avetar from "../../images/Loopy_logo_new-removebg-preview.png"
 import Button from "@mui/material/Button";
+import CircularIntegration from "../AcceptButton/AceptButton";
 
 const ForgotPass: React.FC = () => {
 
@@ -128,8 +129,8 @@ const ForgotPass: React.FC = () => {
 
                <Grid container spacing={2} justifyContent="center" alignItems="center">
                    <FormControl>
-                       <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
-                           <Button variant="contained">Submit</Button>
+                       <Grid item xs={12} sm={6} md={4} lg={2} xl={16}>
+                           <CircularIntegration/>
                        </Grid>
                    </FormControl>
                </Grid>
