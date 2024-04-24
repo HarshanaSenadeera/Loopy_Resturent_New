@@ -21,7 +21,7 @@ import Box from '@material-ui/core/Box/Box';
 
 export const NumCardTwo = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        /*<Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={4}>
                     <Card sx={{ display: 'flex',justifyContent:'space-evenly' }}>
@@ -38,8 +38,8 @@ export const NumCardTwo = () => {
                         </Box>
                         <CardMedia
                             sx={{ width: 151,display:'flex',justifyContent:'center' }}
-                            /*       image={guest} // Assuming you have 'guest' imported or defined somewhere
-                                   alt="Live from space album cover"*/
+                            /!*       image={guest} // Assuming you have 'guest' imported or defined somewhere
+                                   alt="Live from space album cover"*!/
                         >
                             <PeopleAltSharp style={{ fontSize: '5rem',color:'#f44336' }} />
 
@@ -59,8 +59,8 @@ export const NumCardTwo = () => {
                             </CardContent>
 
                         </Box>
-                        <CardMedia sx={{ width: 151,display:'flex',justifyContent:'center' }}/*       image={guest} // Assuming you have 'guest' imported or defined somewhere
-                            alt="Live from space album cover"*/>
+                        <CardMedia sx={{ width: 151,display:'flex',justifyContent:'center' }}/!*       image={guest} // Assuming you have 'guest' imported or defined somewhere
+                            alt="Live from space album cover"*!/>
                             <TakeoutDining style={{ fontSize: '5rem',color:'#f44336' }} />
 
                         </CardMedia>
@@ -81,8 +81,8 @@ export const NumCardTwo = () => {
                         </Box>
                         <CardMedia
                             sx={{ width: 151,display:'flex',justifyContent:'center' }}
-                            /*       image={guest} // Assuming you have 'guest' imported or defined somewhere
-                                   alt="Live from space album cover"*/
+                            /!*       image={guest} // Assuming you have 'guest' imported or defined somewhere
+                                   alt="Live from space album cover"*!/
                         >
                             <Fastfood style={{ fontSize: '5rem',color:'#f44336' }} />
 
@@ -91,6 +91,9 @@ export const NumCardTwo = () => {
                 </Grid>
 
             </Grid>
-        </Box>
+        </Box>*/
+
+        <>
+        </>
     );
 };

@@ -25,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function ResponsiveGrid() {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+       /* <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={4}>
                     <Card sx={{height:200,borderRadius:5}}>
@@ -123,6 +123,10 @@ export default function ResponsiveGrid() {
                 </Grid>
 
             </Grid>
-        </Box>
+        </Box>*/
+
+        <>
+
+        </>
     );
 }
