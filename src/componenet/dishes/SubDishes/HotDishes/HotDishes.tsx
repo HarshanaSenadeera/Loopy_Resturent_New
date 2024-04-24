@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import pic from '../../../../images/Kottu.jpg';
+import pic2 from '../../../../images/kottu beef.png'
 
 import * as React from "react";
 const dishesData = [
@@ -14,6 +15,8 @@ const dishesData = [
     { title: 'Cheese Kottu', price:600 ,pic:pic },
     { title: 'Chicken Kottu', price:700  ,pic:pic },
     { title: 'Dolphin Kottu', price:750  ,pic:pic },
+    { title: 'Beef Kottu', price:750  ,pic:pic2 }
+
 
     // Add more dishes data as needed
 ];
@@ -30,12 +33,12 @@ export const HotDishes = () => {
                             <CardMedia
                                 component="img"
                                 alt="dish image"
-                                height="140"
+                                height="150"
                                 image={dish.pic}
                                 className="pop-up-image"
                             />
                         </div>
-                        <CardContent sx={{ textAlign: 'center',display:'flex' }}>
+                        <CardContent sx={{ textAlign: 'center',display:'flex',justifyContent:'space-evenly' }}>
                             <Typography variant="h5" gutterBottom>
                                 {dish.title}
                             </Typography>
@@ -43,9 +46,12 @@ export const HotDishes = () => {
                                 RS. {dish.price}
                             </Typography>
                         </CardContent>
-                        <CardActions sx={{ justifyContent: 'center' }}>
-                            <Button variant="contained" color="error">
-                                View More
+                        <CardActions sx={{ justifyContent: 'space-around' ,display:'flex'}}>
+                            <Button variant="contained" color="error" sx={{width:100}}>
+                                Edit
+                            </Button>
+                            <Button variant="contained" color="success" sx={{width:100}}>
+                                Add
                             </Button>
                         </CardActions>
                     </Card>
