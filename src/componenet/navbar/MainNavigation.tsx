@@ -36,7 +36,7 @@ const MainNavigation: React.FC = () => (
         <List>
             {[
                 { text: 'Dashboard', to: '/' },
-                { text: 'Dishes', to: '/dish' },
+                { text: 'Dishes', to: '/dishNew' },
                 { text: 'Byers', to: '/byer' },
                 { text: 'Invoices', to: '/invoices' },
                 { text: 'Reports', to: '/report' },
