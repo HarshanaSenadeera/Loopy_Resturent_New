@@ -116,31 +116,31 @@ const headCells: readonly HeadCell[] = [
         id: 'name',
         numeric: false,
         disablePadding: true,
-        label: 'Dessert (100g serving)',
+        label: 'Byer Name',
     },
     {
         id: 'calories',
         numeric: true,
         disablePadding: false,
-        label: 'Calories',
+        label: 'Date',
     },
     {
         id: 'fat',
         numeric: true,
         disablePadding: false,
-        label: 'Fat (g)',
+        label: 'QTY',
     },
     {
         id: 'carbs',
         numeric: true,
         disablePadding: false,
-        label: 'Carbs (g)',
+        label: 'Price',
     },
     {
         id: 'protein',
         numeric: true,
         disablePadding: false,
-        label: 'Protein (g)',
+        label: 'Item',
     },
 ];
 
