@@ -144,7 +144,7 @@ export default function ResponsiveDrawer(props: Props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose} >Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
     );
@@ -308,7 +308,6 @@ export default function ResponsiveDrawer(props: Props) {
             <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
                 <Toolbar/>
                 <MainContext />
-
             </Box>
         </Box>
     );

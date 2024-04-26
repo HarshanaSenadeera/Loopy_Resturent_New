@@ -40,7 +40,7 @@ const MainNavigation: React.FC = () => (
                 { text: 'Byers', to: '/byer' },
                 { text: 'Invoices', to: '/invoices' },
                 { text: 'Reports', to: '/report' },
-                { text: 'Tables', to: '/tables' },
+                { text: 'Tables', to: '/orderTable' },
             ].map(({ text, to }, index) => (
                 <ListItemWithLink key={text} to={to} text={text} icon={index === 0 ? <DashboardIcon />  : index === 1 ? <MenuBook />  : index === 2 ? <SupportAgent/> :
                     index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />} />

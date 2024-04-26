@@ -7,16 +7,14 @@ import dishes from "../../componenet/dishes/dishes";
 import user from "../../componenet/userDetails/user"
 import ReportMain from "../MainReports/Report";
 import {Byers} from "../../componenet/Byers/Byer";
+import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
 import ButtonBaseDemo from "../../componenet/dishesNew/DisNew";
-import { HotDishes } from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
-import { ColdDishes } from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
-import {CartProvider} from "../../componenet/dishes/SubDishes/CartProvider";
+import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
+import OrderTable from "../../componenet/OrderTable/OrderTable";
 
 export const MainContext = () => {
     return (
         <div>
-            <CartProvider>
-
             <Routes>
 
                 <Route path="/" Component={DashMain}></Route>
@@ -24,13 +22,11 @@ export const MainContext = () => {
                 <Route path="/user" Component={user}></Route>
                 <Route path="/report" Component={ReportMain}></Route>
                 <Route path="/byer" Component={Byers}></Route>
-                    <Route path="/hotDish" Component={HotDishes}></Route>
-                    <Route path="/coldDish" Component={ColdDishes}></Route>
-
-
+                <Route path="/hotDish" Component={HotDishes}></Route>
+                <Route path="/coldDish" Component={ColdDishes}></Route>
+                <Route path="/orderTable" Component={OrderTable}></Route>
 
             </Routes>
-            </CartProvider>
         </div>
     );
 };

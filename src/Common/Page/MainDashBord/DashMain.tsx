@@ -2,12 +2,10 @@
 import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";*/
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
-import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";
-import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
+import {NumCardTwo} from "../../../componenet/dashboard/NumCardTwo";
+
 
 export const DashMain = () => {
     return (
