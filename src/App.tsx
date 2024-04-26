@@ -6,7 +6,6 @@ import ResponsiveDrawer from "./componenet/navbar/nav";
 import ImgMediaCard from "./componenet/dishes/dishes";
 import {DefaultLayout} from "./Common/Default Layout/DefaultLayout";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {Byers} from "./componenet/Byers/Byer";
 import SignIn from "./componenet/loging/loging";
 
 

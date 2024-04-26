@@ -1,9 +1,9 @@
-import {Stack} from "@mui/material";
+import {SelectChangeEvent, Stack} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Divider from "@mui/material/Divider";
 import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -12,113 +12,138 @@ import MenuItem from "@mui/material/MenuItem";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import * as React from "react";
-import {ChangeEvent, FormEvent, useState} from "react";
-import NumberInputIntroduction from "../../Common/Counter/Counter";
-import ClearableProp from "../../Common/Date/Date";
-import CollapsibleTable from "../../Common/Table/Table";
+import { ChangeEvent, FormEvent, useState } from "react";
 
-export const Byers = () => {
+export const Buyers = () => {
+    const [buyerList, setBuyerList] = useState<{ firstname: string; lastname: string; address: string; email: string; phone: string; item: string; }[]>([]);
 
+    const [buyerDetails, setBuyerDetails] = useState({
+        firstname: "",
+        lastname: "",
+        address: "",
+        email: "",
+        phone: "",
+        item: "Milo", // Default value for the Select component
+    });
 
-    const [Lastname, setLName] = useState<string>('');
-    const [Firstname, setFName] = useState<string>('');
-    const [address, setAddress] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [phone,setPhoneNum]=useState<string>('');
-
-    const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setFName(event.target.value);
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>) => {
+        const { name, value } = event.target;
+        setBuyerDetails(prevState => ({
+            ...prevState,
+            [name as string]: value as string,
+        }));
     };
 
-    const handleLastNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setLName(event.target.value);
+    const handleSelectChange = (event: SelectChangeEvent<string>) => {
+        const value = event.target.value;
+        setBuyerDetails(prevState => ({
+            ...prevState,
+            item: value,
+        }));
     };
 
-    const handlePhoneNumber = (event: ChangeEvent<HTMLInputElement>) =>{
-        setPhoneNum(event.target.value);
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setBuyerList(prevList => [...prevList, buyerDetails]);
+        setBuyerDetails({
+            firstname: "",
+            lastname: "",
+            address: "",
+            email: "",
+            phone: "",
+            item: "Milo",
+        });
     };
-
-    const handleAddressChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setAddress(event.target.value);
-    };
-
-    const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-    };
-
-    const states = [
-        { value: 'Milo', label: 'Milo' },
-        { value: 'Cocacola', label: 'Cocacola' },
-        { value: 'Fanta', label: 'Fanta' },
-        { value: 'Potelo', label: 'Potelo' },
-        { value: 'Sprit', label: 'Sprit' },
-    ] as const;
-
-    const handleSubmit=(event :FormEvent<HTMLFormElement>) => {
-        console.log('FName:', Firstname);
-        console.log('LName:', Lastname);
-        console.log('Address:', address);
-        console.log('Email:', email);
-        console.log('Phone:', phone);
-    }
 
     return (
-
-
         <form onSubmit={handleSubmit}>
             <Stack direction="column" alignItems="center" spacing={2}>
                 <Card>
-                    <CardHeader subheader="" title="Byers"/>
-                    <Divider/>
+                    <CardHeader subheader="" title="Buyers" />
+                    <Divider />
                     <CardContent>
                         <Grid container spacing={3}>
-                            <Grid md={6} xs={12}>
+                            <Grid item md={6} xs={12}>
                                 <FormControl fullWidth required>
-                                    <InputLabel>Byer name</InputLabel>
-                                    <OutlinedInput label="First name" name="firstName"
-                                                   onChange={handleFirstNameChange}/>
+                                    <InputLabel>Buyer First Name</InputLabel>
+                                    <OutlinedInput label="First name" name="firstname" value={buyerDetails.firstname} onChange={handleInputChange} />
                                 </FormControl>
                             </Grid>
-                            <Grid md={6} xs={12}>
+                            <Grid item md={6} xs={12}>
                                 <FormControl fullWidth required>
-                                    <InputLabel>Date</InputLabel>
-                                    <ClearableProp/>
+                                    <InputLabel>Buyer Last Name</InputLabel>
+                                    <OutlinedInput label="Last name" name="lastname" value={buyerDetails.lastname} onChange={handleInputChange} />
                                 </FormControl>
                             </Grid>
-                            <Grid md={6} xs={12}>
+                            <Grid item md={6} xs={12}>
                                 <FormControl fullWidth required>
-                                   <NumberInputIntroduction/>
+                                    <InputLabel>Address</InputLabel>
+                                    <OutlinedInput label="Address" name="address" value={buyerDetails.address} onChange={handleInputChange} />
                                 </FormControl>
                             </Grid>
-                            <Grid md={6} xs={12}>
-                                <FormControl fullWidth>
-                                    <InputLabel>Price</InputLabel>
-                                    <OutlinedInput label="Phone number" name="phone" type="tel"
-                                                   onChange={handlePhoneNumber}/>
+                            <Grid item md={6} xs={12}>
+                                <FormControl fullWidth required>
+                                    <InputLabel>Email</InputLabel>
+                                    <OutlinedInput label="Email" name="email" value={buyerDetails.email} onChange={handleInputChange} />
                                 </FormControl>
                             </Grid>
-                            <Grid md={12} xs={12}>
+                            <Grid item md={6} xs={12}>
+                                <FormControl fullWidth required>
+                                    <InputLabel>Phone</InputLabel>
+                                    <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange} />
+                                </FormControl>
+                            </Grid>
+                            <Grid item md={6} xs={12}>
                                 <FormControl fullWidth>
                                     <InputLabel>Item</InputLabel>
-                                    <Select defaultValue="Milo" label="State" name="state" variant="outlined">
-                                        {states.map((option) => (
-                                            <MenuItem key={option.value} value={option.value}>
-                                                {option.label}
-                                            </MenuItem>
-                                        ))}
+                                    <Select value={buyerDetails.item} label="Item" name="item" onChange={handleSelectChange} variant="outlined">
+                                        <MenuItem value="Milo">Milo</MenuItem>
+                                        <MenuItem value="Cocacola">Cocacola</MenuItem>
+                                        <MenuItem value="Fanta">Fanta</MenuItem>
+                                        <MenuItem value="Potelo">Potelo</MenuItem>
+                                        <MenuItem value="Sprit">Sprit</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
                         </Grid>
                     </CardContent>
-                    <Divider/>
-                    <CardActions sx={{justifyContent: 'flex-end'}}>
-                        <Button type="submit" variant="contained">Save details</Button>
+                    <Divider />
+                    <CardActions sx={{ justifyContent: 'flex-end' }}>
+                        <Button type="submit" variant="contained">Save Details</Button>
                     </CardActions>
                 </Card>
-                <CollapsibleTable/>
+                <EditableTable buyerList={buyerList} />
             </Stack>
         </form>
+    );
+};
 
+// Editable Table Component
+const EditableTable: React.FC<{ buyerList: any[] }> = ({ buyerList }) => {
+    return (
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Item</th>
+            </tr>
+            </thead>
+            <tbody>
+            {buyerList.map((buyer, index) => (
+                <tr key={index}>
+                    <td>{buyer.firstname}</td>
+                    <td>{buyer.lastname}</td>
+                    <td>{buyer.address}</td>
+                    <td>{buyer.email}</td>
+                    <td>{buyer.phone}</td>
+                    <td>{buyer.item}</td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
     );
 };
