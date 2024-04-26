@@ -21,15 +21,14 @@ interface DishItem {
 }
 
 const dishesData: DishItem[] = [
-    { id: 7, title: 'Normal Kottu', price: 220, pic: pic, quantity: 0 },
-    { id: 8, title: 'Egg Kottu', price: 520, pic: pic, quantity: 0 },
-    { id: 9, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
-
+    { id: 10, title: 'Normal Kottu', price: 220, pic: pic, quantity: 0 },
+    { id: 11, title: 'Egg Kottu', price: 520, pic: pic, quantity: 0 },
+    { id: 12, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
     // Add more dishes data as needed
 ];
 
-export const HotDishes = () => {
-    const { cartItems, setCartItems } = useCart(); // Destructure cartItems and setCartItems from useCart hook
+export const SoupDishes = () => {
+    const { cartItems, setCartItems} = useCart(); // Destructure cartItems and setCartItems from useCart hook
 
     // Specify the type for the item parameter
     const addToCart = (item: DishItem) => {
@@ -46,13 +45,13 @@ export const HotDishes = () => {
     };
 
     return (
-        <Grid container >
+        <Grid container rowSpacing={2} >
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
                     <Cart itemCount={cartItems.length} />
                 </Grid>
             </Grid>
-            <Grid container  spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
+            <Grid  container  spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
                 {dishesData.map((dish, index) => (
                     <Grid item xs={5} key={index}>
                         <Card sx={{ maxWidth: 345 }}>
