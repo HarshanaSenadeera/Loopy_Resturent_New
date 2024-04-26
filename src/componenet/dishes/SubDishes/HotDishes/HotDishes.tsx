@@ -1,3 +1,4 @@
+import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -7,10 +8,11 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import pic from '../../../../images/Kottu.jpg';
 import pic2 from '../../../../images/kottu beef.png'
-
-import * as React from "react";
 import {Cart} from "../../Card/Cart";
 import {useState} from "react";
+import {Dialog} from "@mui/material";
+import {DialogContent} from "@mui/joy";
+import EditDish from "../../../EditDish/EditDish";
 const dishesData = [
     { title: 'Noraml Kottu', price:220  ,pic:pic },
     { title: 'Egg Kottu', price:520 ,pic:pic },
@@ -19,18 +21,23 @@ const dishesData = [
     { title: 'Dolphin Kottu', price:750  ,pic:pic },
     { title: 'Beef Kottu', price:750  ,pic:pic2 }
 
-
-
-    // Add more dishes data as needed
 ];
-
-
 
 export const HotDishes = () => {
     const [cartItems, setCartItems] = useState(0);
 
     const addToCart = () => {
         setCartItems(cartItems + 1);
+    };
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
     return (
         <Grid>
@@ -58,11 +65,21 @@ export const HotDishes = () => {
                                 RS. {dish.price}
                             </Typography>
                         </CardContent>
-                        <CardActions sx={{ justifyContent: 'space-around' ,display:'flex'}}>
-                            <Button variant="contained" color="error" sx={{width:100}}>
-                                Edit
-                            </Button>
-                            <Button variant="contained" color="success" sx={{width:100}} onClick={addToCart}>
+                        <CardActions sx={{justifyContent: 'space-around', display: 'flex'}}>
+                            <div>
+                                <Button variant="contained" color="error" sx={{width: 100}}
+                                        onClick={handleClickOpen}>
+                                    Edit
+                                </Button>
+                                <Dialog open={open} onClose={handleClose}>
+                                    <DialogContent>
+                                        {/* Your popup component content goes here */}
+                                        <EditDish/>
+                                        <Button onClick={handleClose}>Close</Button>
+                                    </DialogContent>
+                                </Dialog>
+                            </div>
+                            <Button variant="contained" color="success" sx={{width: 100}} onClick={addToCart}>
                                 Add
                             </Button>
                         </CardActions>

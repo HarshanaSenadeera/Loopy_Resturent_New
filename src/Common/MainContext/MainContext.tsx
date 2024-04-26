@@ -11,6 +11,7 @@ import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
 import ButtonBaseDemo from "../../componenet/dishesNew/DisNew";
 import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
 import OrderTable from "../../componenet/OrderTable/OrderTable";
+import EditDishModal from "../../componenet/EditDish/EditDish";
 
 export const MainContext = () => {
     return (

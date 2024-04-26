@@ -48,6 +48,16 @@ export const ColdDishes = () => {
         }
     };
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -77,7 +87,7 @@ export const ColdDishes = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions sx={{ justifyContent: 'space-around', display: 'flex' }}>
-                                <Button variant="contained" color="error" sx={{ width: 100 }}>
+                                <Button variant="contained" color="error" sx={{ width: 100 }} >
                                     Edit
                                 </Button>
                                 <Button variant="contained" color="success" sx={{ width: 100 }} onClick={() => addToCart(dish)}>

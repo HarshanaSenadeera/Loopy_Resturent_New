@@ -1,22 +1,10 @@
 import * as React from 'react';
-import { experimentalStyled as styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Card from "@mui/material/Card";
-import {CardHeader} from "@mui/material";
-import Avatar from '@mui/material/Avatar';
-import { red ,blueGrey} from '@mui/material/colors';
-import { grey } from '@mui/material/colors';
-import TextField from "@mui/material/TextField";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import TableBarIcon from '@mui/icons-material/TableBar';
-import {Liquor, TableBar ,OutdoorGrill,PeopleAltSharp,TakeoutDining,Fastfood} from '@mui/icons-material';
-import guest from '../../Common/Image/guest.jpg'
-import { useTheme } from '@mui/material/styles';
+import {PeopleAltSharp,TakeoutDining,Fastfood} from '@mui/icons-material';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import Box from '@material-ui/core/Box/Box';
 
 export const NumCardTwo = () => {
