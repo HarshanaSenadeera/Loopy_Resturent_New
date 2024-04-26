@@ -20,7 +20,7 @@ export default function ImgMediaCard() {
                         <CardMedia
                             component="img"
                             alt="green iguana"
-                            height="140"
+                            height="dkd"
                             image={pic}
                             className="pop-up-image"
                         />

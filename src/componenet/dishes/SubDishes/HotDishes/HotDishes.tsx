@@ -9,6 +9,8 @@ import pic from '../../../../images/Kottu.jpg';
 import pic2 from '../../../../images/kottu beef.png'
 
 import * as React from "react";
+import {Cart} from "../../Card/Cart";
+import {useState} from "react";
 const dishesData = [
     { title: 'Noraml Kottu', price:220  ,pic:pic },
     { title: 'Egg Kottu', price:520 ,pic:pic },
@@ -18,13 +20,23 @@ const dishesData = [
     { title: 'Beef Kottu', price:750  ,pic:pic2 }
 
 
+
     // Add more dishes data as needed
 ];
 
 
 
 export const HotDishes = () => {
+    const [cartItems, setCartItems] = useState(0);
+
+    const addToCart = () => {
+        setCartItems(cartItems + 1);
+    };
     return (
+        <Grid>
+            <Grid container sx={{display:'flex',justifyContent:'flex-end'}}>
+                <Cart itemCount={cartItems} />
+            </Grid>
         <Grid container spacing={2} rowSpacing={3}  columns={{ xs: 2, md: 15 ,sm:2}}>
             {dishesData.map((dish, index) => (
                 <Grid item xs={5} key={index}>
@@ -50,13 +62,14 @@ export const HotDishes = () => {
                             <Button variant="contained" color="error" sx={{width:100}}>
                                 Edit
                             </Button>
-                            <Button variant="contained" color="success" sx={{width:100}}>
+                            <Button variant="contained" color="success" sx={{width:100}} onClick={addToCart}>
                                 Add
                             </Button>
                         </CardActions>
                     </Card>
                 </Grid>
             ))}
+        </Grid>
         </Grid>
     );
 };

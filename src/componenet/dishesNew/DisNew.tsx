@@ -26,7 +26,7 @@ const images = [
     url: soup,
     title: 'Soup Dishes',
     width: '33.33%',
-    link:'/hotDish'
+    link:'/coldDish'
 
 
   },
@@ -181,7 +181,7 @@ export default function ButtonBaseDemo() {
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
               }}
             >
-              <Link to={image.link} style={{fontSize:'20px' ,fontWeight:'bold',color:'white'}}>
+              <Link to={image.link}  style={{fontSize:'20px' ,fontWeight:'bold',color:'white'}}>
               {image.title}
               </Link>
               <ImageMarked className="MuiImageMarked-root" />

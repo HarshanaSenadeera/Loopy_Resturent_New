@@ -6,8 +6,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
-import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
-import {NumCardTwo} from "../../../componenet/dashboard/NumCardTwo";
+import {NumCardTwo} from "../../../componenet/DashBoard/NumCardTwo";
+import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
 
 export const DashMain = () => {
     return (

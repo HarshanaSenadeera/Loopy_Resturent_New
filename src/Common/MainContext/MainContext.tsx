@@ -9,6 +9,7 @@ import ReportMain from "../MainReports/Report";
 import {Byers} from "../../componenet/Byers/Byer";
 import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
 import ButtonBaseDemo from "../../componenet/dishesNew/DisNew";
+import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
 
 export const MainContext = () => {
     return (
@@ -21,6 +22,8 @@ export const MainContext = () => {
                 <Route path="/report" Component={ReportMain}></Route>
                 <Route path="/byer" Component={Byers}></Route>
                 <Route path="/hotDish" Component={HotDishes}></Route>
+                <Route path="/coldDish" Component={ColdDishes}></Route>
+
             </Routes>
         </div>
     );
