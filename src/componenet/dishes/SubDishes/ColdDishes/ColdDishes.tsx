@@ -11,8 +11,14 @@ import pic from "../../../../images/Kottu.jpg";
 import pic2 from "../../../../images/kottu beef.png";
 import {useCart} from "../CartProvider";
 import {Dialog} from "@mui/material";
-import {DialogContent} from "@mui/joy";
+import {DialogContent, Modal} from "@mui/joy";
 import EditDish from "../../../EditDish/EditDish";
+import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import {Close} from "@material-ui/icons";
+import ProfileForm from "../../../userDetails/user";
+import {useTheme} from "@mui/material/styles";
 
 // Define the type for the item object
 interface DishItem {
@@ -35,15 +41,24 @@ const dishesData: DishItem[] = [
 
 export const ColdDishes = () => {
 
-    const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+
+    const [open, setOpen] = useState(false);
+
+    const theme = useTheme();
+
+    const handleOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
     };
+
 
 
     const { cartItems, setCartItems } = useCart(); // Destructure cartItems and setCartItems from useCart hook
@@ -99,8 +114,37 @@ export const ColdDishes = () => {
                                     <Dialog open={open} onClose={handleClose}>
                                         <DialogContent>
                                             {/* Your popup component content goes here */}
-                                            <EditDish/>
-                                            <Button onClick={handleClose}>Close</Button>
+                                            <>
+                                                <MenuItem onClick={handleOpen}>My account</MenuItem>
+                                                <Modal
+                                                    open={open}
+                                                    onClose={handleClose}
+                                                    aria-labelledby="modal-modal-title"
+                                                    aria-describedby="modal-modal-description"
+                                                >
+                                                    <Box sx={{
+                                                        position: 'absolute',
+                                                        top: '50%',
+                                                        left: '50%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        width: 400,
+                                                        bgcolor: 'background.paper',
+                                                        p: 4,
+                                                        [theme.breakpoints.up('sm')]: {
+                                                            width: 600,
+                                                            maxWidth: '80%',
+                                                        },
+                                                    }}>
+
+                                                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                            <IconButton onClick={handleClose} size="small">
+                                                                <Close />
+                                                            </IconButton>
+                                                        </Box>
+                                                        <ProfileForm />
+                                                    </Box>
+                                                </Modal>
+                                            </>
                                         </DialogContent>
                                     </Dialog>
                                 </div>
