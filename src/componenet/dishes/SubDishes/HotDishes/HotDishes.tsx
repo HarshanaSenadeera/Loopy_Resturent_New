@@ -10,6 +10,9 @@ import { Cart } from "../../Card/Cart";
 import pic from "../../../../images/Kottu.jpg";
 import pic2 from "../../../../images/kottu beef.png";
 import {useCart} from "../CartProvider";
+import {DialogContent} from "@mui/joy";
+import {Dialog} from "@mui/material";
+import EditDish from "../../../EditDish/EditDish";
 
 // Define the type for the item object
 interface DishItem {
@@ -28,7 +31,21 @@ const dishesData: DishItem[] = [
     // Add more dishes data as needed
 ];
 
+
+
+
 export const HotDishes = () => {
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const { cartItems, setCartItems } = useCart(); // Destructure cartItems and setCartItems from useCart hook
 
     // Specify the type for the item parameter
@@ -73,11 +90,23 @@ export const HotDishes = () => {
                                     RS. {dish.price}
                                 </Typography>
                             </CardContent>
-                            <CardActions sx={{ justifyContent: 'space-around', display: 'flex' }}>
-                                <Button variant="contained" color="error" sx={{ width: 100 }}>
-                                    Edit
-                                </Button>
-                                <Button variant="contained" color="success" sx={{ width: 100 }} onClick={() => addToCart(dish)}>
+                            <CardActions sx={{justifyContent: 'space-around', display: 'flex'}}>
+                                <div>
+                                    <Button variant="contained" color="error" sx={{width: 100}}
+                                            onClick={handleClickOpen}>
+                                        Edit
+                                    </Button>
+                                    <Dialog open={open} onClose={handleClose}>
+                                        <DialogContent>
+                                            {/* Your popup component content goes here */}
+                                            <EditDish/>
+                                            <Button onClick={handleClose}>Close</Button>
+                                        </DialogContent>
+                                    </Dialog>
+                                </div>
+
+                                <Button variant="contained" color="success" sx={{width: 100}}
+                                        onClick={() => addToCart(dish)}>
                                     Add
                                 </Button>
                             </CardActions>
