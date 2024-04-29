@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -48,24 +47,14 @@ export const ColdDishes = () => {
         }
     };
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
     return (
-        <Grid container spacing={2}>
+        <Grid container >
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
                     <Cart itemCount={cartItems.length} />
                 </Grid>
             </Grid>
-            <Grid container spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
+            <Grid container  spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
                 {dishesData.map((dish, index) => (
                     <Grid item xs={5} key={index}>
                         <Card sx={{ maxWidth: 345 }}>
@@ -87,7 +76,7 @@ export const ColdDishes = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions sx={{ justifyContent: 'space-around', display: 'flex' }}>
-                                <Button variant="contained" color="error" sx={{ width: 100 }} >
+                                <Button variant="contained" color="error" sx={{ width: 100 }}>
                                     Edit
                                 </Button>
                                 <Button variant="contained" color="success" sx={{ width: 100 }} onClick={() => addToCart(dish)}>
