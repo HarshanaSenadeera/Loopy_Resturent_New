@@ -12,14 +12,15 @@ const ResponsiveComponent = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' , borderRadius: '20px',
+                        border:' 1px solid #c52b18'}}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="h5">
                                     Total Guest
                                 </Typography>
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    Mac Miller
+                                    50
                                 </Typography>
                             </CardContent>
                         </Box>
@@ -31,14 +32,15 @@ const ResponsiveComponent = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' ,  borderRadius: '20px',
+                        border:' 1px solid #c52b18'}}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="h5">
                                     Take away
                                 </Typography>
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    Mac Miller
+                                    150
                                 </Typography>
                             </CardContent>
                         </Box>
@@ -50,14 +52,15 @@ const ResponsiveComponent = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                    <Card sx={{ display: 'flex', justifyContent: 'space-evenly' , borderRadius: '20px',
+                        border:' 1px solid #c52b18'}}>
                         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                             <CardContent sx={{ flex: '1 0 auto' }}>
                                 <Typography component="div" variant="h5">
                                     Dining
                                 </Typography>
                                 <Typography variant="subtitle1" color="text.secondary" component="div">
-                                    Mac Miller
+                                    20
                                 </Typography>
                             </CardContent>
                         </Box>
