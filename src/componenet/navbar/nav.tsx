@@ -15,7 +15,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {alpha, styled} from "@mui/material/styles";
+import {alpha, styled, useTheme} from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -27,11 +27,13 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import {MainContext} from "../../Common/MainContext/MainContext";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import {MenuBook, Receipt, SupportAgent, TableBar, WavingHand} from "@mui/icons-material";
-import {Assessment, Settings} from "@material-ui/icons";
+import {Assessment, Close, Settings} from "@material-ui/icons";
 import Link from "@mui/material/Link";
 import ImgMediaCard from "../dishes/dishes";
 import SignIn from "../loging/loging";
 import MainNavigation from "./MainNavigation";
+import ProfileForm from "../userDetails/user";
+import {Modal} from "@mui/joy";
 const drawerWidth = 240;
 
 interface Props {
@@ -66,38 +68,6 @@ export default function ResponsiveDrawer(props: Props) {
     };
 
     const drawer = (
-/*
-        <div>
-            <Toolbar />
-            <Divider />
-            <List>
-                {['Dashboard', 'Dishes', 'Byers', 'Invoices', 'Reports', 'Tables'].map((text, index) => (
-                    <ListItem key={text} disablePadding >
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index === 0 ? <DashboardIcon />  : index === 1 ? <MenuBook />  : index === 2 ? <SupportAgent/> :
-                                    index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['Settings', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index === 0 ? <Settings /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </div>
-*/
         <MainNavigation/>
     );
 
@@ -118,6 +88,7 @@ export default function ResponsiveDrawer(props: Props) {
         setMobileMoreAnchorEl(null);
     };
 
+
     const handleMenuClose = () => {
         setAnchorEl(null);
         handleMobileMenuClose();
@@ -125,6 +96,19 @@ export default function ResponsiveDrawer(props: Props) {
 
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
+    };
+
+    /*----------User-----------------*/
+    const [open, setOpen] = useState(false);
+
+    const theme = useTheme();
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
 
     const menuId = 'primary-search-account-menu';
@@ -145,7 +129,40 @@ export default function ResponsiveDrawer(props: Props) {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose} >Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+
+
+            <>
+                <MenuItem onClick={handleOpen}>My account</MenuItem>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 400,
+                        bgcolor: 'background.paper',
+                        boxShadow: 24,
+                        p: 4,
+                        [theme.breakpoints.up('sm')]: {
+                            width: 600,
+                            maxWidth: '80%',
+                        },
+                    }}>
+
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <IconButton onClick={handleClose} size="small">
+                                <Close />
+                            </IconButton>
+                        </Box>
+                        <ProfileForm />
+                    </Box>
+                </Modal>
+            </>
         </Menu>
     );
 

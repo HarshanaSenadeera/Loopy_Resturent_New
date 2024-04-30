@@ -16,7 +16,7 @@ import Paper from "@mui/material/Paper";
 export default function ResponsiveGrid() {
     return (
         <>
-             <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={4}>
                     <Card sx={{height:200,borderRadius:5}}>
@@ -42,14 +42,11 @@ export default function ResponsiveGrid() {
                             >
                                 000
                             </Typography>
-
-
                         </CardContent>
-
-
-
                     </Card>
                 </Grid>
+
+
                 <Grid item xs={4}>
                     <Card sx={{height:200,borderRadius:5}}>
                         <CardHeader sx={{bgcolor:'#ff9c00'}}
@@ -81,6 +78,8 @@ export default function ResponsiveGrid() {
 
                     </Card>
                 </Grid>
+
+
                 <Grid item xs={4}>
                     <Card sx={{height:200,borderRadius:5}}>
                         <CardHeader sx={{bgcolor:'#ff9c00'}}
@@ -104,12 +103,7 @@ export default function ResponsiveGrid() {
                             >
                                 000
                             </Typography>
-
-
                         </CardContent>
-
-
-
                     </Card>
                 </Grid>
 

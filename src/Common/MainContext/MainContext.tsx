@@ -8,11 +8,13 @@ import user from "../../componenet/userDetails/user"
 import ReportMain from "../MainReports/Report";
 import {HotDishes} from "../../componenet/dishes/SubDishes/HotDishes/HotDishes";
 import ButtonBaseDemo from "../../componenet/dishesNew/DisNew";
-import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
+
 import OrderTable from "../../componenet/OrderTable/OrderTable";
 import EditDishModal from "../../componenet/EditDish/EditDish";
 import {Buyers} from "../../componenet/Byers/Byer";
 import {CartProvider} from "../../componenet/dishes/SubDishes/CartProvider";
+import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
+
 
 export const MainContext = () => {
     return (

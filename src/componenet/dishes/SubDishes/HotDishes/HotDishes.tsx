@@ -27,6 +27,10 @@ const dishesData: DishItem[] = [
     { id: 7, title: 'Normal Kottu', price: 220, pic: pic, quantity: 0 },
     { id: 8, title: 'Egg Kottu', price: 520, pic: pic, quantity: 0 },
     { id: 9, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
+    { id: 10, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
+    { id: 11, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
+    { id: 12, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
+    { id: 13, title: 'Cheese Kottu', price: 600, pic: pic, quantity: 0 },
 
     // Add more dishes data as needed
 ];
