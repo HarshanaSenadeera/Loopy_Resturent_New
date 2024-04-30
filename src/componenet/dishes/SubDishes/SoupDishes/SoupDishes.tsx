@@ -28,6 +28,7 @@ const dishesData: DishItem[] = [
 ];
 
 export const SoupDishes = () => {
+    const [showCartDetails, setShowCartDetails] = useState(false);
     const { cartItems, setCartItems} = useCart(); // Destructure cartItems and setCartItems from useCart hook
 
     // Specify the type for the item parameter
@@ -48,7 +49,7 @@ export const SoupDishes = () => {
         <Grid container rowSpacing={2} >
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
-                    <Cart itemCount={cartItems.length} />
+                    <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
                 </Grid>
             </Grid>
             <Grid  container  spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>

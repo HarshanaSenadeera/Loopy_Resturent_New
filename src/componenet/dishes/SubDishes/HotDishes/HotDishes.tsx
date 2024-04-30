@@ -35,6 +35,7 @@ const dishesData: DishItem[] = [
 
 
 export const HotDishes = () => {
+    const [showCartDetails, setShowCartDetails] = useState(false);
 
     const [open, setOpen] = React.useState(false);
 
@@ -66,7 +67,7 @@ export const HotDishes = () => {
         <Grid container >
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
-                    <Cart itemCount={cartItems.length} />
+                    <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
                 </Grid>
             </Grid>
             <Grid container  spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
