@@ -8,9 +8,6 @@ import {DefaultLayout} from "./Common/Default Layout/DefaultLayout";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import SignIn from "./componenet/loging/loging";
 
-
-
-
 function App() {
   return (
       <>

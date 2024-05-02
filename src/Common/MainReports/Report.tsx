@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {DailyIncome} from "../Reports/DailyIncome";
-import Grid from '@mui/material/Unstable_Grid2';
 import {MounthlyIncome} from "../Reports/MounthlyIncome";
 import {Annually} from "../Reports/Annually";
+import Grid from "@mui/material/Grid";
+
 
 export default function ReportMain(): React.JSX.Element {
     return (
