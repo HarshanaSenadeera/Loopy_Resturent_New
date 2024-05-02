@@ -224,7 +224,7 @@ export default function CreateOrder() {
                                     </FormControl>
                                     <FormControl fullWidth required>
                                         <InputLabel>Phone</InputLabel>
-                                        <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange} disabled={Type === 'Table'}/>
+                                        <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange} disabled={Type === 'Table' || orderType === 'Take Away'}/>
                                     </FormControl>
                                     <FormControl fullWidth>
                                         <InputLabel>Item</InputLabel>
