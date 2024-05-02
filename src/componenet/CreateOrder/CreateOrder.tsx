@@ -55,6 +55,7 @@ export default function CreateOrder() {
         }));
     };
 
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setBuyerList(prevList => [...prevList, buyerDetails]);
