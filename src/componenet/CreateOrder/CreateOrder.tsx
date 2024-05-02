@@ -154,62 +154,62 @@ export default function CreateOrder() {
                                     </Grid>
 
 
-                                    {/*First Row*/}
-                                    <Stack direction="row" spacing={2} sx={{ width: '100%' }}>
-                                        <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
-                                            <InputLabel id="demo-select-small-label-1">Type</InputLabel>
-                                            <Select
-                                                labelId="demo-select-small-label-1"
-                                                id="demo-select-small-1"
-                                                value={Type}
-                                                label="Age"
-                                                onChange={typeOnChange}
-                                            >
-                                                <MenuItem value="">
-                                                    <em>None</em>
-                                                </MenuItem>
-                                                <MenuItem value="Table">Table </MenuItem>
-                                                <MenuItem value="Room">Room</MenuItem>
-                                            </Select>
-                                        </FormControl>
+                                    {orderType !== 'Take Away' && orderType !== 'Online' && (
+                                        <Stack direction="row" spacing={2} sx={{ width: '100%' }}>
+                                            <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
+                                                <InputLabel id="demo-select-small-label-1">Type</InputLabel>
+                                                <Select
+                                                    labelId="demo-select-small-label-1"
+                                                    id="demo-select-small-1"
+                                                    value={Type}
+                                                    label="Type"
+                                                    onChange={typeOnChange}
+                                                >
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    <MenuItem value="Table">Table</MenuItem>
+                                                    <MenuItem value="Room">Room</MenuItem>
+                                                </Select>
+                                            </FormControl>
 
-                                        <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
-                                            <InputLabel id="demo-select-small-label-2">Table</InputLabel>
-                                            <Select
-                                                labelId="demo-select-small-label-2"
-                                                id="demo-select-small-2"
-                                                value={tableType}
-                                                label="Age"
-                                                onChange={tableTypeOnChange}
-                                            >
-                                                <MenuItem value="">
-                                                    <em>None</em>
-                                                </MenuItem>
-                                                <MenuItem value="Table 01">Table 01</MenuItem>
-                                                <MenuItem value="Table 02">Table 02</MenuItem>
-                                                <MenuItem value="Table 03">Table 03</MenuItem>
-                                            </Select>
-                                        </FormControl>
-
-
-                                        <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
-                                            <InputLabel id="demo-select-small-label-2">Room</InputLabel>
-                                            <Select
-                                                labelId="demo-select-small-label-2"
-                                                id="demo-select-small-2"
-                                                value={roomType}
-                                                label="Age"
-                                                onChange={roomTypeOnChange}
-                                            >
-                                                <MenuItem value="">
-                                                    <em>None</em>
-                                                </MenuItem>
-                                                <MenuItem value="Room 01">Room 01</MenuItem>
-                                                <MenuItem value="Room 02">Room 02</MenuItem>
-                                                <MenuItem value="Room 03">Room 03</MenuItem>
-                                            </Select>
-                                        </FormControl>
-                                    </Stack>
+                                            <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
+                                                <InputLabel id="demo-select-small-label-2">Table</InputLabel>
+                                                <Select
+                                                    labelId="demo-select-small-label-2"
+                                                    id="demo-select-small-2"
+                                                    value={tableType}
+                                                    label="Table"
+                                                    onChange={tableTypeOnChange}
+                                                >
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    <MenuItem value="Table 01">Table 01</MenuItem>
+                                                    <MenuItem value="Table 02">Table 02</MenuItem>
+                                                    <MenuItem value="Table 03">Table 03</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                            <FormControl sx={{ m: 1, minWidth: 110 }} size="small" fullWidth>
+                                                <InputLabel id="demo-select-small-label-2">Room</InputLabel>
+                                                <Select
+                                                    labelId="demo-select-small-label-2"
+                                                    id="demo-select-small-2"
+                                                    value={roomType}
+                                                    label="Room"
+                                                    onChange={roomTypeOnChange}
+                                                    disabled={tableType === 'Table'} // Disable when Table is selected
+                                                >
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    <MenuItem value="Room 01">Room 01</MenuItem>
+                                                    <MenuItem value="Room 02">Room 02</MenuItem>
+                                                    <MenuItem value="Room 03">Room 03</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Stack>
+                                    )}
 
 
                                     <FormControl fullWidth required>

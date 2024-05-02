@@ -17,7 +17,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
-const ProfileForm: React.FC = () => {
+const EditDish: React.FC = () => {
     const [photo, setPhoto] = useState<File | null>(null);
     const [Lastname, setLName] = useState<string>('');
     const [Firstname, setFName] = useState<string>('');
@@ -163,4 +163,4 @@ const ProfileForm: React.FC = () => {
     );
 };
 
-export default ProfileForm;
+export default EditDish;
