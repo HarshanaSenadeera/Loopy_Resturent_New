@@ -181,6 +181,7 @@ export default function CreateOrder() {
                                                     value={tableType}
                                                     label="Table"
                                                     onChange={tableTypeOnChange}
+                                                    disabled={Type === 'Room'}
                                                 >
                                                     <MenuItem value="">
                                                         <em>None</em>
@@ -198,7 +199,7 @@ export default function CreateOrder() {
                                                     value={roomType}
                                                     label="Room"
                                                     onChange={roomTypeOnChange}
-                                                    disabled={tableType === 'Table'} // Disable when Table is selected
+                                                    disabled={Type === 'Table'} // Disable when Table is selected
                                                 >
                                                     <MenuItem value="">
                                                         <em>None</em>
@@ -214,15 +215,15 @@ export default function CreateOrder() {
 
                                     <FormControl fullWidth required>
                                         <InputLabel>Address</InputLabel>
-                                        <OutlinedInput label="Address" name="address" value={buyerDetails.address} onChange={handleInputChange}/>
+                                        <OutlinedInput label="Address" name="address" value={buyerDetails.address} onChange={handleInputChange}  disabled={Type === 'Room' || Type === 'Table'}/>
                                     </FormControl>
                                     <FormControl fullWidth required>
                                         <InputLabel>Email</InputLabel>
-                                        <OutlinedInput label="Email" name="email" value={buyerDetails.email} onChange={handleInputChange}/>
+                                        <OutlinedInput label="Email" name="email" value={buyerDetails.email} onChange={handleInputChange} disabled={Type === 'Room' || Type === 'Table'}/>
                                     </FormControl>
                                     <FormControl fullWidth required>
                                         <InputLabel>Phone</InputLabel>
-                                        <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange}/>
+                                        <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange} disabled={Type === 'Table'}/>
                                     </FormControl>
                                     <FormControl fullWidth>
                                         <InputLabel>Item</InputLabel>
