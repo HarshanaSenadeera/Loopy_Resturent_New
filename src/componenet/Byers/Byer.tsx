@@ -13,6 +13,11 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import * as React from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableHead from "@mui/material/TableHead";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
 
 export const Buyers = () => {
     const [buyerList, setBuyerList] = useState<{ firstname: string; lastname: string; address: string; email: string; phone: string; item: string; }[]>([]);
@@ -121,29 +126,29 @@ export const Buyers = () => {
 // Editable Table Component
 const EditableTable: React.FC<{ buyerList: any[] }> = ({ buyerList }) => {
     return (
-        <table>
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Item</th>
-            </tr>
-            </thead>
-            <tbody>
-            {buyerList.map((buyer, index) => (
-                <tr key={index}>
-                    <td>{buyer.firstname}</td>
-                    <td>{buyer.lastname}</td>
-                    <td>{buyer.address}</td>
-                    <td>{buyer.email}</td>
-                    <td>{buyer.phone}</td>
-                    <td>{buyer.item}</td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Last Name</TableCell>
+                    <TableCell>Address</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Phone</TableCell>
+                    <TableCell>Item</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {buyerList.map((buyer, index) => (
+                    <TableRow key={index}>
+                        <TableCell>{buyer.firstname}</TableCell>
+                        <TableCell>{buyer.lastname}</TableCell>
+                        <TableCell>{buyer.address}</TableCell>
+                        <TableCell>{buyer.email}</TableCell>
+                        <TableCell>{buyer.phone}</TableCell>
+                        <TableCell>{buyer.item}</TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
     );
 };

@@ -16,6 +16,7 @@ import {Stack} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import {InputAdornment} from "@material-ui/core";
 
 const EditDish: React.FC = () => {
     const [photo, setPhoto] = useState<File | null>(null);
@@ -25,6 +26,7 @@ const EditDish: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [photoUrl, setPhotoUrl] = useState<string>('');
     const [phone,setPhoneNum]=useState<string>('');
+    const [Count,setNumber]=useState<string>('');
 
 
     const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -71,6 +73,14 @@ const EditDish: React.FC = () => {
         console.log('Phone:', phone);
     };
 
+    const handleNumberChange = (event:any) => {
+        // Get the value entered in the number input
+        const numberValue = event.target.value;
+
+        // Do whatever you need to do with the number value, such as storing it in state
+        // For example, if you're using React state:
+        setNumber(numberValue); // Assuming you have a state variable 'number' and a setter function 'setNumber'
+    };
     return (
         <form onSubmit={handleSubmit}>
             <Stack direction="column" alignItems="center" spacing={2}>
@@ -97,31 +107,38 @@ const EditDish: React.FC = () => {
                     }}
                 >*/}
                 <Card>
-                    <CardHeader subheader="The information can be edited" title="Profile"/>
+                    <CardHeader subheader="The information can be edited" title="Food Details"/>
                     <Divider/>
                     <CardContent>
                         <Grid container spacing={3}>
                             <Grid md={6} xs={12}>
                                 <FormControl fullWidth required>
-                                    <InputLabel>First name</InputLabel>
-                                    <OutlinedInput  label="First name" name="firstName"
+                                    <InputLabel>Food Name</InputLabel>
+                                    <OutlinedInput  label="Name" name="Name"
                                                     onChange={handleFirstNameChange}/>
 
                                 </FormControl>
                             </Grid>
                             <Grid md={6} xs={12}>
-                                <FormControl fullWidth required>
-                                    <InputLabel>Last name</InputLabel>
-                                    <OutlinedInput label="Last name" name="lastName"
-                                                   onChange={handleLastNameChange}/>
+                                <FormControl fullWidth sx={{ m: 1 }}>
+                                    <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+                                    <OutlinedInput
+                                        id="outlined-adornment-amount"
+                                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                                        label="Amount"
+                                    />
                                 </FormControl>
                             </Grid>
                             <Grid md={6} xs={12}>
                                 <FormControl fullWidth required>
-                                    <InputLabel>Email address</InputLabel>
-                                    <OutlinedInput  label="Email address"
-                                                    name="email"
-                                                    onChange={handleEmailChange}/>
+                                    <InputLabel>Number</InputLabel>
+                                    <OutlinedInput
+                                        type="number"
+                                        inputProps={{ min: 0 }}
+                                        label="Number"
+                                        name="number"
+                                        onChange={handleNumberChange}
+                                    />
                                 </FormControl>
                             </Grid>
                             <Grid md={6} xs={12}>
