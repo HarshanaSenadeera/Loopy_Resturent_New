@@ -62,6 +62,7 @@
     ]
   },
   "devDependencies": {
-    "@mui/x-charts": "^7.3.1"
+    "@mui/x-charts": "^7.3.1",
+    "@types/react-router-dom": "^5.3.3"
   }
 }

@@ -73,6 +73,8 @@ export default function CreateOrder() {
     const [Type, setType] = React.useState('');
     const [tableType, setTableType] = React.useState('');
     const [roomType, setRoomType] = React.useState('');
+    const [KOT, setKOTType] = React.useState('');
+    const [BOT, setBOTType] = React.useState('');
 
     const orderTypeOnChange = (event: SelectChangeEvent) => {
         setOrderType(event.target.value);
@@ -113,17 +115,17 @@ export default function CreateOrder() {
                                                 <Box sx={{ display: 'flex', gap: 2 }}>
                                                     <Radio
                                                         label="KOT"
-                                                        checked={selectedValue === 'a'}
+                                                        checked={selectedValue === 'KOT'}
                                                         onChange={handleChange}
-                                                        value="a"
+                                                        value="KOT"
                                                         name="radio-buttons"
                                                         slotProps={{ input: { 'aria-label': 'A' } }}
                                                     />
                                                     <Radio
                                                         label="BOT"
-                                                        checked={selectedValue === 'b'}
+                                                        checked={selectedValue === 'BOT'}
                                                         onChange={handleChange}
-                                                        value="b"
+                                                        value="BOT"
                                                         name="radio-buttons"
                                                         slotProps={{ input: { 'aria-label': 'B' } }}
                                                     />
@@ -226,16 +228,31 @@ export default function CreateOrder() {
                                         <InputLabel>Phone</InputLabel>
                                         <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone} onChange={handleInputChange} disabled={Type === 'Table' || orderType === 'Take Away'}/>
                                     </FormControl>
-                                    <FormControl fullWidth>
-                                        <InputLabel>Item</InputLabel>
-                                        <Select value={buyerDetails.item} label="Item" name="item" onChange={handleSelectChange} variant="outlined">
-                                            <MenuItem value="Milo">Milo</MenuItem>
-                                            <MenuItem value="Cocacola">Cocacola</MenuItem>
-                                            <MenuItem value="Fanta">Fanta</MenuItem>
-                                            <MenuItem value="Potelo">Potelo</MenuItem>
-                                            <MenuItem value="Sprit">Sprit</MenuItem>
-                                        </Select>
-                                    </FormControl>
+
+                                    <Stack direction="row" spacing={2} sx={{ width: '100%' }}>
+                                        <FormControl fullWidth>
+                                            <InputLabel>KOT</InputLabel>
+                                            <Select value={buyerDetails.item} label="Item" name="item" onChange={handleSelectChange} variant="outlined" disabled={selectedValue === 'BOT'}>
+                                                <MenuItem value="Milo">Milo</MenuItem>
+                                                <MenuItem value="Cocacola">Cocacola</MenuItem>
+                                                <MenuItem value="Fanta">Fanta</MenuItem>
+                                                <MenuItem value="Potelo">Potelo</MenuItem>
+                                                <MenuItem value="Sprit">Sprit</MenuItem>
+                                            </Select>
+                                        </FormControl>
+
+                                        <FormControl fullWidth>
+                                            <InputLabel>BOT</InputLabel>
+                                            <Select value={buyerDetails.item} label="Item" name="item" onChange={handleSelectChange} variant="outlined" disabled={selectedValue === 'KOT'}>
+                                                <MenuItem value="Milo">Milo</MenuItem>
+                                                <MenuItem value="Cocacola">Cocacola</MenuItem>
+                                                <MenuItem value="Fanta">Fanta</MenuItem>
+                                                <MenuItem value="Potelo">Potelo</MenuItem>
+                                                <MenuItem value="Sprit">Sprit</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Stack>
+
                                 </Stack>
                             </CardContent>
                             <Divider/>

@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 
 export default function ReportMain(): React.JSX.Element {
     return (
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
             <Grid lg={4} sm={6} xs={12}>
                 <DailyIncome diff={16} trend="down" sx={{ height: '100%' }} value="Rs:00000.00" />
             </Grid>

@@ -15,6 +15,7 @@ import {Buyers} from "../../componenet/Byers/Byer";
 import {CartProvider} from "../../componenet/dishes/SubDishes/CartProvider";
 import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
 import FullFeaturedCrudGrid from "../../componenet/OrderTable/OrderTable";
+import {DefaultLayout} from "../Default Layout/DefaultLayout";
 
 
 export const MainContext = () => {
@@ -32,7 +33,6 @@ export const MainContext = () => {
                     <Route path="/orderTable" Component={FullFeaturedCrudGrid}></Route>
                 </Routes>
             </CartProvider>
-
         </div>
     );
 };
