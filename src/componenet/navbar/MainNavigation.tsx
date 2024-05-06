@@ -41,6 +41,7 @@ const MainNavigation: React.FC = () => (
                 { text: 'Invoices', to: '/invoices' },
                 { text: 'Reports', to: '/report' },
                 { text: 'Tables', to: '/orderTable' },
+
             ].map(({ text, to }, index) => (
                 <ListItemWithLink key={text} to={to} text={text} icon={index === 0 ? <DashboardIcon />  : index === 1 ? <MenuBook />  : index === 2 ? <SupportAgent/> :
                     index === 3 ? <Receipt/>: index === 4 ? <Assessment/>: <TableBar />} />
@@ -48,10 +49,15 @@ const MainNavigation: React.FC = () => (
         </List>
         <Divider />
         <List>
-            {['Settings', 'Trash', 'Spam'].map((text, index) => (
+            {[
+                { text: 'Settings', to: 'setting'},
+                /*{ text: 'Trash', to: ''},
+                { text: 'Spam', to: ''},*/
+
+            ].map(({ text, to }, index) => (
                 <ListItemWithLink
                     key={text}
-                    to={`/${text.toLowerCase()}`}
+                    to={to}
                     text={text}
                     icon={index === 0 ? <Settings /> : <MailIcon />}
                 />

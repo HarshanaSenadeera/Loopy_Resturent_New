@@ -16,6 +16,8 @@ import {CartProvider} from "../../componenet/dishes/SubDishes/CartProvider";
 import {ColdDishes} from "../../componenet/dishes/SubDishes/ColdDishes/ColdDishes";
 import FullFeaturedCrudGrid from "../../componenet/OrderTable/OrderTable";
 import {DefaultLayout} from "../Default Layout/DefaultLayout";
+import AddNewDish from "../AddDishes/AddDish";
+import SettingMain from "../Page/Settings/Setting";
 
 
 export const MainContext = () => {
@@ -31,6 +33,8 @@ export const MainContext = () => {
                     <Route path="/hotDish" Component={HotDishes}></Route>
                     <Route path="/coldDish" Component={ColdDishes}></Route>
                     <Route path="/orderTable" Component={FullFeaturedCrudGrid}></Route>
+                    <Route path="/addNewDish" Component={AddNewDish}></Route>
+                    <Route path="/setting" Component={SettingMain}></Route>
                 </Routes>
             </CartProvider>
         </div>

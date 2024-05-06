@@ -29,12 +29,14 @@
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "dayjs": "^1.11.11",
+    "install": "^0.13.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.9",
     "typescript": "^4.9.5",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -63,6 +65,7 @@
   },
   "devDependencies": {
     "@mui/x-charts": "^7.3.1",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "@types/uuid": "^9.0.8"
   }
 }
