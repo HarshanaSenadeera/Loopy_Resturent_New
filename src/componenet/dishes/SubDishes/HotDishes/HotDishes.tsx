@@ -11,6 +11,12 @@ import pic from "../../../../images/Kottu.jpg";
 import pic2 from "../../../../images/kottu beef.png";
 import { useCart } from "../CartProvider";
 import CardDetails from "../../Card/CardDetaiils/CardDetails";
+import {Modal} from "@mui/joy";
+import ProfileForm from "../../../EditDish/EditDish";
+import EditDish from "../../../EditDish/EditDish";
+import {Close} from "@material-ui/icons";
+import IconButton from "@mui/material/IconButton";
+import Box from "@mui/material/Box";
 
 // Define the type for the item object
 interface DishItem {
@@ -29,6 +35,8 @@ const dishesData: DishItem[] = [
     { id: 5, title: 'Dolphin Kottu', price: 750, pic: pic, quantity: 0 },
     { id: 6, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
 ];
+
+
 
 export const HotDishes = () => {
     const { cartItems, setCartItems } = useCart(); // Destructure cartItems and setCartItems from useCart hook
@@ -49,6 +57,16 @@ export const HotDishes = () => {
         } else {
             setCartItems([...cartItems, { ...item, quantity: 1 }]);
         }
+    };
+
+    const [open, setOpen] = useState(false);
+
+    const handleEditClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
     };
 
     return (
@@ -80,14 +98,31 @@ export const HotDishes = () => {
                                     RS. {dish.price}
                                 </Typography>
                             </CardContent>
-                            <CardActions sx={{ justifyContent: 'space-around', display: 'flex' }}>
-                                <Button variant="contained" color="error" sx={{ width: 100 }}>
-                                    Edit
-                                </Button>
-                                <Button variant="contained" color="success" sx={{ width: 100 }} onClick={() => addToCart(dish)}>
-                                    Add
-                                </Button>
-                            </CardActions>
+                            <>
+                                <CardActions sx={{ justifyContent: 'space-around', display: 'flex' }}>
+                                    <Button variant="contained" color="error" sx={{ width: 100 }} onClick={handleEditClick}>
+                                        Edit
+                                    </Button>
+                                    <Button variant="contained" color="success" sx={{ width: 100 }} onClick={() => addToCart(dish)}>
+                                        Add
+                                    </Button>
+                                </CardActions>
+                                <Modal
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="modal-modal-title"
+                                    aria-describedby="modal-modal-description"
+                                >
+                                    <div>
+                                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                            <IconButton onClick={handleClose} size="small">
+                                                <Close />
+                                            </IconButton>
+                                        </Box>
+                                        <EditDish/>
+                                    </div>
+                                </Modal>
+                            </>
                         </Card>
                     </Grid>
                 ))}
