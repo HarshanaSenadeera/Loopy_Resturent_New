@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 interface DishItem {
     id: number;
@@ -79,6 +81,13 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
                     </CardContent>
                 </Card>
             ))}
+
+            <Box sx={{display:'flex',justifyContent:'center',justifyItems:'center',paddingTop:'20px',paddingBottom:'20px'}}>
+                <Button variant="contained">
+                    Order
+                </Button>
+            </Box>
+
         </Card>
     );
 };

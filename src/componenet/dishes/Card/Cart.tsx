@@ -57,6 +57,7 @@ export const Cart: React.FC<{ itemCount: number; toggleCartDetails: () => void }
                 <Typography variant="h5" sx={{ textAlign: 'center' }}>
                     {itemCount}
                 </Typography>
+
             </Box>
         </Box>
     );
