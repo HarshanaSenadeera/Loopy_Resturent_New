@@ -29,6 +29,8 @@ export default function SettingMain() {
         setOpen(false); // Set open to false to hide the modal
     };
 
+
+
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
@@ -161,7 +163,6 @@ export default function SettingMain() {
                     </Grid>
                 </Grid>
             </Box>
-
         </>
     );
 }
