@@ -222,8 +222,8 @@ export default function AddNewDish() {
     ];
 
     const [photo, setPhoto] = useState<File | null>(null);
-    const [Lastname, setLName] = useState<string>('');
-    const [Firstname, setFName] = useState<string>('');
+    const [Lastname, setName] = useState<string>('');
+    const [Firstname, setId] = useState<string>('');
     const [photoUrl, setPhotoUrl] = useState<string>('');
 
     const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -238,13 +238,17 @@ export default function AddNewDish() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         //handle the form submission, like uploading the photo and saving the bio to a database
         console.log('Photo:', photo);
-        console.log('FName:', Firstname);
-        console.log('LName:', Lastname);
+        console.log('Id:', Firstname);
+        console.log('Name:', Lastname);
     };
 
-    const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setFName(event.target.value);
+    const FoodId = (event: ChangeEvent<HTMLInputElement>) => {
+        setId(event.target.value);
     };
+
+    const FoodName = (event : ChangeEvent<HTMLInputElement>) =>{
+        setName(event.target.value);
+    }
 
 
 
@@ -291,13 +295,14 @@ export default function AddNewDish() {
                                         <FormControl fullWidth required>
                                             <InputLabel>Food ID</InputLabel>
                                             <OutlinedInput label="FoodID" name="FoodId"
-                                                           onChange={handleFirstNameChange}/>
+                                                           onChange={FoodId}/>
                                         </FormControl>
                                     </Grid>
                                     <Grid md={6} xs={12}>
                                         <FormControl fullWidth>
                                             <InputLabel>Name</InputLabel>
-                                            <OutlinedInput label="Name"/>
+                                            <OutlinedInput label="Name" name="Name"
+                                            onChange={FoodName}/>
                                         </FormControl>
                                     </Grid>
                                 </Grid>

@@ -9,6 +9,9 @@ import {Receipt} from "@mui/icons-material";
 import {useState} from "react";
 import {LocalPharmacyOutlined} from "@material-ui/icons";
 import Typography from "@mui/material/Typography";
+import AddNewDish from "../../AddDishes/AddDish";
+import {useTheme} from "@mui/material/styles";
+import {useMediaQuery} from "@mui/material";
 
 export default function SettingMain() {
 
@@ -28,6 +31,12 @@ export default function SettingMain() {
     const handleClose = () => {
         setOpen(false); // Set open to false to hide the modal
     };
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.up('sm'));
+    const isMediamScreen = useMediaQuery(theme.breakpoints.up('md'));
+    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+    const isExtralargeScreen = useMediaQuery(theme.breakpoints.up('xl'));
 
 
 
@@ -149,15 +158,29 @@ export default function SettingMain() {
                                 justifyContent: 'center'
                             }}
                         >
-                            <Box sx={{
-                                position: 'absolute',
-                                width: 400,
-                                bgcolor: 'background.paper',
-                                border: '2px solid #000',
-                                boxShadow: 24,
-                                p: 4,
-                            }}>
-                                <CreateOrder/>
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    width: 400,
+                                    bgcolor: 'background.paper',
+                                    border: '2px solid #000',
+                                    boxShadow: 24,
+                                    p: 4,
+                                    ...(isSmallScreen && {
+                                        width: '100%', // Adjust width for small screens
+                                    }),
+                                    ...(isMediamScreen && {
+                                        width: '100%', // Adjust width for small screens
+                                    }),
+                                    ...(isLargeScreen && {
+                                        width: '100%', // Adjust width for small screens
+                                    }),
+                                    ...(isExtralargeScreen && {
+                                        width: '100%', // Adjust width for small screens
+                                    }),
+                                }}
+                            >
+                                <AddNewDish/>
                             </Box>
                         </Modal>
                     </Grid>
