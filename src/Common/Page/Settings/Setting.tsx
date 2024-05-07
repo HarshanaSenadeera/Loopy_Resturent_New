@@ -44,81 +44,6 @@ export default function SettingMain() {
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <>
-                        {/*<Grid item xs={4}>
-                            <Box sx={{
-                                '& button': {
-                                    m: 1,
-                                    width: '350px',
-                                    height: '150px',
-                                    backgroundColor: '#ffffff',
-                                    color: '#c52b18',
-                                    borderRadius: '20px',
-                                    border:' 1px solid #c52b18',
-                                    '&:hover': {
-                                        backgroundColor: '#c52b18', // Change hover background color
-                                        color: '#ffffff', // Change hover text color
-                                    }
-
-                                }
-                            }}>
-                                <div>
-                                    <Button
-                                        variant="contained"
-                                        size="large"
-                                        startIcon={<BorderColorIcon/>}
-                                        onClick={handleOpen} // Open the modal on button click
-                                    >
-                                        Create Order
-                                    </Button>
-                                </div>
-                            </Box>
-                        </Grid>*/}
-                        {/*<Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                width: {
-                                    xs: '90%',
-                                    sm: 500,
-                                    md: 600,
-                                    lg: 800,
-                                    xl: 900
-                                },
-                                bgcolor: 'background.paper',
-                                boxShadow: 24,
-                                p: 4,
-                            }}>
-                                <CreateOrder/>
-                            </Box>
-                        </Modal>*/}
-                    </>
-
-
-                    {/*<Grid item xs={4}>
-                        <Box sx={{
-                            '& button': {
-                                m: 1,
-                                width: '350px',
-                                height: '150px',
-                                backgroundColor: '#c52b18',
-                                color: 'white'
-                            }
-                        }}>
-                            <div>
-                                <Button variant="contained" size="large">
-                                    Create Order
-                                </Button>
-                            </div>
-                        </Box>
-                    </Grid>*/}
 
                     <Grid item xs={4}>
                         <Box sx={{
@@ -145,6 +70,7 @@ export default function SettingMain() {
                                 >
                                     Add New Dish
                                 </Button>
+
                             </div>
                         </Box>
                         <Modal
@@ -162,21 +88,23 @@ export default function SettingMain() {
                                 sx={{
                                     position: 'absolute',
                                     width: 400,
+                                    height: 600,
                                     bgcolor: 'background.paper',
                                     border: '2px solid #000',
                                     boxShadow: 24,
                                     p: 4,
+                                    overflow: 'auto', // Add scrollbar
                                     ...(isSmallScreen && {
                                         width: '100%', // Adjust width for small screens
                                     }),
                                     ...(isMediamScreen && {
-                                        width: '100%', // Adjust width for small screens
+                                        width: '70%', // Adjust width for medium screens
                                     }),
                                     ...(isLargeScreen && {
-                                        width: '100%', // Adjust width for small screens
+                                        width: '80%', // Adjust width for large screens
                                     }),
                                     ...(isExtralargeScreen && {
-                                        width: '100%', // Adjust width for small screens
+                                        width: '90%', // Adjust width for extra large screens
                                     }),
                                 }}
                             >
