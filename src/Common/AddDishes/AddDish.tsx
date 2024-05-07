@@ -222,8 +222,8 @@ export default function AddNewDish() {
     ];
 
     const [photo, setPhoto] = useState<File | null>(null);
-    const [Lastname, setName] = useState<string>('');
-    const [Firstname, setId] = useState<string>('');
+    const [GetFootName, setName] = useState<string>('');
+    const [GetFoodId, setId] = useState<string>('');
     const [photoUrl, setPhotoUrl] = useState<string>('');
 
     const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -238,8 +238,8 @@ export default function AddNewDish() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         //handle the form submission, like uploading the photo and saving the bio to a database
         console.log('Photo:', photo);
-        console.log('Id:', Firstname);
-        console.log('Name:', Lastname);
+        console.log('Id:', GetFoodId);
+        console.log('Name:', GetFootName);
     };
 
     const FoodId = (event: ChangeEvent<HTMLInputElement>) => {
@@ -252,8 +252,8 @@ export default function AddNewDish() {
 
 
 
-    return (
 
+    return (
         <Box
             sx={{
                 height: 500,
