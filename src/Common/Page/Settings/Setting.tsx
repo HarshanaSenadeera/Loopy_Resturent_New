@@ -35,11 +35,8 @@ export default function SettingMain() {
         setOpen(false);
     };
 
-
-
     const updateTable = (newOrder: Order) => {
         setBuyerList(prevList => [...prevList, newOrder]); // Update the buyerList state with the new order
-        console.log(buyerList)
     };
 
     return (
@@ -129,6 +126,5 @@ export default function SettingMain() {
             </Box>
 
         </>
-
     );
 }
