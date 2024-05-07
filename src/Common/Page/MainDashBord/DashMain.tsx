@@ -1,12 +1,13 @@
-import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
-import ButtonSizes from "../../../componenet/DashBoard/ButtonSide";
-import NumCardTwo from '../../../componenet/DashBoard/NumCardTwo';
+import ButtonSizes from "../../../componenet/dashboard/ButtonSide";
+import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
+import NumCardTwo from "../../../componenet/dashboard/NumCardTwo";
 
 
 

@@ -1,43 +1,44 @@
-// SettingMain.js
-
-import React, { useState } from 'react';
+import * as React from 'react';
+import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import { Modal } from "@mui/joy";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import {Modal} from "@mui/joy";
 import CreateOrder from "../../../componenet/CreateOrder/CreateOrder";
-import { LocalPharmacyOutlined } from "@material-ui/icons";
+import {Receipt} from "@mui/icons-material";
+import {useState} from "react";
+import {LocalPharmacyOutlined} from "@material-ui/icons";
 import Typography from "@mui/material/Typography";
-import Table from "@mui/material/Table";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import TableBody from "@mui/material/TableBody";
-
-interface Order {
-    OrderNum: string;
-    address: string;
-    email: string;
-    phone: string;
-    item: string;
-    type: string;
-}
+import AddNewDish from "../../AddDishes/AddDish";
+import {useTheme} from "@mui/material/styles";
+import {useMediaQuery} from "@mui/material";
 
 export default function SettingMain() {
+
+
+    const [showComponent, setShowComponent] = useState(false);
+
+    const handleButtonClick = () => {
+        setShowComponent(true); // Set showComponent to true when button is clicked
+    };
+
     const [open, setOpen] = useState(false);
-    const [buyerList, setBuyerList] = useState<Order[]>([]);
 
     const handleOpen = () => {
-        setOpen(true);
+        setOpen(true); // Set open to true to show the modal
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false); // Set open to false to hide the modal
     };
 
-    const updateTable = (newOrder: Order) => {
-        setBuyerList(prevList => [...prevList, newOrder]); // Update the buyerList state with the new order
-    };
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.up('sm'));
+    const isMediamScreen = useMediaQuery(theme.breakpoints.up('md'));
+    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+    const isExtralargeScreen = useMediaQuery(theme.breakpoints.up('xl'));
+
+
 
     return (
         <>
@@ -55,8 +56,8 @@ export default function SettingMain() {
                                 borderRadius: '20px',
                                 border: '1px solid #c52b18',
                                 '&:hover': {
-                                    backgroundColor: '#c52b18',
-                                    color: '#ffffff',
+                                    backgroundColor: '#c52b18', // Change hover background color
+                                    color: '#ffffff', // Change hover text color
                                 }
                             }
                         }}>
@@ -65,10 +66,11 @@ export default function SettingMain() {
                                     variant="contained"
                                     size="large"
                                     startIcon={<LocalPharmacyOutlined />}
-                                    onClick={handleOpen}
+                                    onClick={handleOpen} // Call handleOpen function on button click
                                 >
                                     Add New Dish
                                 </Button>
+
                             </div>
                         </Box>
                         <Modal
@@ -82,49 +84,36 @@ export default function SettingMain() {
                                 justifyContent: 'center'
                             }}
                         >
-                            <Box sx={{
-                                position: 'absolute',
-                                width: 400,
-                                bgcolor: 'background.paper',
-                                border: '2px solid #000',
-                                boxShadow: 24,
-                                p: 4,
-                            }}>
-                                {/* Pass updateTable function as a prop */}
-                                <CreateOrder updateTable={updateTable} />
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    width: 400,
+                                    height: 600,
+                                    bgcolor: 'background.paper',
+                                    border: '2px solid #000',
+                                    boxShadow: 24,
+                                    p: 4,
+                                    overflow: 'auto', // Add scrollbar
+                                    ...(isSmallScreen && {
+                                        width: '100%', // Adjust width for small screens
+                                    }),
+                                    ...(isMediamScreen && {
+                                        width: '70%', // Adjust width for medium screens
+                                    }),
+                                    ...(isLargeScreen && {
+                                        width: '80%', // Adjust width for large screens
+                                    }),
+                                    ...(isExtralargeScreen && {
+                                        width: '90%', // Adjust width for extra large screens
+                                    }),
+                                }}
+                            >
+                                <AddNewDish/>
                             </Box>
                         </Modal>
                     </Grid>
-                    <Grid item xs={12}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>OrderNum</TableCell>
-                                    <TableCell>Address</TableCell>
-                                    <TableCell>Email</TableCell>
-                                    <TableCell>Phone</TableCell>
-                                    <TableCell>Type</TableCell>
-                                    <TableCell>Item</TableCell> {/* Adding a new TableCell for Item */}
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {buyerList.map((buyer, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{buyer.OrderNum}</TableCell>
-                                        <TableCell>{buyer.address}</TableCell>
-                                        <TableCell>{buyer.email}</TableCell>
-                                        <TableCell>{buyer.phone}</TableCell>
-                                        <TableCell>{buyer.type}</TableCell> {/* Displaying the selected radio button value */}
-                                        <TableCell>{buyer.type === 'KOT' ? buyer.item : ''}</TableCell> {/* Displaying the item only if KOT is selected */}
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-
-                    </Grid>
                 </Grid>
             </Box>
-
         </>
     );
 }
