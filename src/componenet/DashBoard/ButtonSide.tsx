@@ -14,10 +14,19 @@ import {BorderColor} from "@material-ui/icons";
 import {useState} from "react";
 import {Modal} from "@mui/joy";
 import CreateOrder from "../CreateOrder/CreateOrder";
-
+interface Order {
+    OrderNum: string;
+    address: string;
+    email: string;
+    phone: string;
+    item: string;
+    type: string;
+}
 export default function ButtonSizes() {
 
     const [open, setOpen] = useState(false);
+    const [orderDetails, setOrderDetails] = useState<any>(null); // Provide type or interface for orderDetails
+    const [buyerList, setBuyerList] = useState<Order[]>([]);
 
     const handleOpen = () => {
         setOpen(true);
@@ -26,6 +35,10 @@ export default function ButtonSizes() {
     const handleClose = () => {
         setOpen(false);
     };
+    const updateTable = (newOrder: Order) => {
+        setBuyerList(prevList => [...prevList, newOrder]);
+    };
+
 
     return (
         <>
@@ -83,7 +96,7 @@ export default function ButtonSizes() {
                                 boxShadow: 24,
                                 p: 4,
                             }}>
-                                <CreateOrder/>
+                                <CreateOrder updateTable={updateTable} />
                             </Box>
                         </Modal>
                     </>

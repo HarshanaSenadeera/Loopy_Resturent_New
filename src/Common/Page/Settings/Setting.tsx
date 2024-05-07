@@ -1,113 +1,51 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
+// SettingMain.js
+
+import React, { useState } from 'react';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import {Modal} from "@mui/joy";
+import Button from "@mui/material/Button";
+import { Modal } from "@mui/joy";
 import CreateOrder from "../../../componenet/CreateOrder/CreateOrder";
-import {Receipt} from "@mui/icons-material";
-import {useState} from "react";
-import {LocalPharmacyOutlined} from "@material-ui/icons";
+import { LocalPharmacyOutlined } from "@material-ui/icons";
 import Typography from "@mui/material/Typography";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+
+interface Order {
+    OrderNum: string;
+    address: string;
+    email: string;
+    phone: string;
+    item: string;
+    type: string;
+}
 
 export default function SettingMain() {
-
-
-    const [showComponent, setShowComponent] = useState(false);
-
-    const handleButtonClick = () => {
-        setShowComponent(true); // Set showComponent to true when button is clicked
-    };
-
     const [open, setOpen] = useState(false);
+    const [buyerList, setBuyerList] = useState<Order[]>([]);
 
     const handleOpen = () => {
-        setOpen(true); // Set open to true to show the modal
+        setOpen(true);
     };
 
     const handleClose = () => {
-        setOpen(false); // Set open to false to hide the modal
+        setOpen(false);
+    };
+
+
+
+    const updateTable = (newOrder: Order) => {
+        setBuyerList(prevList => [...prevList, newOrder]); // Update the buyerList state with the new order
+        console.log(buyerList)
     };
 
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <>
-                        {/*<Grid item xs={4}>
-                            <Box sx={{
-                                '& button': {
-                                    m: 1,
-                                    width: '350px',
-                                    height: '150px',
-                                    backgroundColor: '#ffffff',
-                                    color: '#c52b18',
-                                    borderRadius: '20px',
-                                    border:' 1px solid #c52b18',
-                                    '&:hover': {
-                                        backgroundColor: '#c52b18', // Change hover background color
-                                        color: '#ffffff', // Change hover text color
-                                    }
-
-                                }
-                            }}>
-                                <div>
-                                    <Button
-                                        variant="contained"
-                                        size="large"
-                                        startIcon={<BorderColorIcon/>}
-                                        onClick={handleOpen} // Open the modal on button click
-                                    >
-                                        Create Order
-                                    </Button>
-                                </div>
-                            </Box>
-                        </Grid>*/}
-                        {/*<Modal
-                            open={open}
-                            onClose={handleClose}
-                            aria-labelledby="modal-modal-title"
-                            aria-describedby="modal-modal-description"
-                        >
-                            <Box sx={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                width: {
-                                    xs: '90%',
-                                    sm: 500,
-                                    md: 600,
-                                    lg: 800,
-                                    xl: 900
-                                },
-                                bgcolor: 'background.paper',
-                                boxShadow: 24,
-                                p: 4,
-                            }}>
-                                <CreateOrder/>
-                            </Box>
-                        </Modal>*/}
-                    </>
-
-
-                    {/*<Grid item xs={4}>
-                        <Box sx={{
-                            '& button': {
-                                m: 1,
-                                width: '350px',
-                                height: '150px',
-                                backgroundColor: '#c52b18',
-                                color: 'white'
-                            }
-                        }}>
-                            <div>
-                                <Button variant="contained" size="large">
-                                    Create Order
-                                </Button>
-                            </div>
-                        </Box>
-                    </Grid>*/}
 
                     <Grid item xs={4}>
                         <Box sx={{
@@ -120,8 +58,8 @@ export default function SettingMain() {
                                 borderRadius: '20px',
                                 border: '1px solid #c52b18',
                                 '&:hover': {
-                                    backgroundColor: '#c52b18', // Change hover background color
-                                    color: '#ffffff', // Change hover text color
+                                    backgroundColor: '#c52b18',
+                                    color: '#ffffff',
                                 }
                             }
                         }}>
@@ -130,7 +68,7 @@ export default function SettingMain() {
                                     variant="contained"
                                     size="large"
                                     startIcon={<LocalPharmacyOutlined />}
-                                    onClick={handleOpen} // Call handleOpen function on button click
+                                    onClick={handleOpen}
                                 >
                                     Add New Dish
                                 </Button>
@@ -155,13 +93,42 @@ export default function SettingMain() {
                                 boxShadow: 24,
                                 p: 4,
                             }}>
-                                <CreateOrder/>
+                                {/* Pass updateTable function as a prop */}
+                                <CreateOrder updateTable={updateTable} />
                             </Box>
                         </Modal>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>OrderNum</TableCell>
+                                    <TableCell>Address</TableCell>
+                                    <TableCell>Email</TableCell>
+                                    <TableCell>Phone</TableCell>
+                                    <TableCell>Type</TableCell>
+                                    <TableCell>Item</TableCell> {/* Adding a new TableCell for Item */}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {buyerList.map((buyer, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{buyer.OrderNum}</TableCell>
+                                        <TableCell>{buyer.address}</TableCell>
+                                        <TableCell>{buyer.email}</TableCell>
+                                        <TableCell>{buyer.phone}</TableCell>
+                                        <TableCell>{buyer.type}</TableCell> {/* Displaying the selected radio button value */}
+                                        <TableCell>{buyer.type === 'KOT' ? buyer.item : ''}</TableCell> {/* Displaying the item only if KOT is selected */}
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+
                     </Grid>
                 </Grid>
             </Box>
 
         </>
+
     );
 }

@@ -5,7 +5,6 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { RadioGroup, SelectChangeEvent, Stack } from '@mui/material';
 import { FormLabel, Radio } from "@mui/joy";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -17,6 +16,11 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableHead from "@mui/material/TableHead";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -27,16 +31,24 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-export default function CreateOrder() {
-    const [buyerList, setBuyerList] = useState<{ firstname: string; lastname: string; address: string; email: string; phone: string; item: string; }[]>([]);
+interface Order {
+    OrderNum: string;
+    address: string;
+    email: string;
+    phone: string;
+    item: string;
+    type: string;
+}
+
+export default function CreateOrder({ updateTable }: { updateTable: (newOrder: Order) => void }) {
+    const [buyerList, setBuyerList] = useState<{OrderNum: string;  address: string; email: string; phone: string; item: string; }[]>([]);
 
     const [buyerDetails, setBuyerDetails] = useState({
-        firstname: "",
-        lastname: "",
+        OrderNum: '',
         address: "",
         email: "",
         phone: "",
-        item: "Milo", // Default value for the Select component
+        item: "",
     });
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>) => {
@@ -58,16 +70,23 @@ export default function CreateOrder() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setBuyerList(prevList => [...prevList, buyerDetails]);
+        const newBuyerDetails = {
+            ...buyerDetails,
+            type: selectedValue,
+            item: selectedValue === 'KOT' ? buyerDetails.item : '',
+            OrderNum: String(buyerList.length + 1),
+        };
+        updateTable(newBuyerDetails); // Notify the parent component about the new order
         setBuyerDetails({
-            firstname: "",
-            lastname: "",
+            OrderNum: String(buyerList.length + 2),
             address: "",
             email: "",
             phone: "",
-            item: "Milo",
+            item: ""
         });
     };
+
+
 
     const [orderType, setOrderType] = React.useState('');
     const [Type, setType] = React.useState('');
@@ -90,11 +109,11 @@ export default function CreateOrder() {
     };
 
 
-        const [selectedValue, setSelectedValue] = React.useState('a');
+    const [selectedValue, setSelectedValue] = React.useState('a');
 
-        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-            setSelectedValue(event.target.value);
-        };
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSelectedValue(event.target.value);
+    };
 
     return (
 
@@ -133,27 +152,27 @@ export default function CreateOrder() {
                                             </Stack>
                                         </Grid>
 
-                                            <Grid item xs={11} sm={5} md={5} lg={5}>
-                                                <Stack>
-                                                    <FormControl sx={{ m: 1, minWidth: 120 }} size="small" fullWidth>
-                                                        <InputLabel id="demo-select-small-label-1">Order Type</InputLabel>
-                                                            <Select
-                                                                labelId="demo-select-small-label-1"
-                                                                id="demo-select-small-1"
-                                                                value={orderType}
-                                                                label="Age"
-                                                                onChange={orderTypeOnChange}
-                                                            >
-                                                                <MenuItem value="">
-                                                                    <em>None</em>
-                                                                </MenuItem>
-                                                                <MenuItem value="Dining">Dining </MenuItem>
-                                                                <MenuItem value="Take Away">Take Away</MenuItem>
-                                                                <MenuItem value="Online">Online</MenuItem>
-                                                            </Select>
-                                                    </FormControl>
-                                                </Stack>
-                                            </Grid>
+                                        <Grid item xs={11} sm={5} md={5} lg={5}>
+                                            <Stack>
+                                                <FormControl sx={{ m: 1, minWidth: 120 }} size="small" fullWidth>
+                                                    <InputLabel id="demo-select-small-label-1">Order Type</InputLabel>
+                                                    <Select
+                                                        labelId="demo-select-small-label-1"
+                                                        id="demo-select-small-1"
+                                                        value={orderType}
+                                                        label="Age"
+                                                        onChange={orderTypeOnChange}
+                                                    >
+                                                        <MenuItem value="">
+                                                            <em>None</em>
+                                                        </MenuItem>
+                                                        <MenuItem value="Dining">Dining </MenuItem>
+                                                        <MenuItem value="Take Away">Take Away</MenuItem>
+                                                        <MenuItem value="Online">Online</MenuItem>
+                                                    </Select>
+                                                </FormControl>
+                                            </Stack>
+                                        </Grid>
                                     </Grid>
 
 
@@ -263,6 +282,8 @@ export default function CreateOrder() {
                     </Grid>
                 </Grid>
             </Box>
+
         </form>
     );
 }
+
