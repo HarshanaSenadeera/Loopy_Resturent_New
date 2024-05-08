@@ -9,6 +9,7 @@ interface Order {
     email: string;
     phone: string;
     item: string;
+    item2:string;
     type: string;
 }
 

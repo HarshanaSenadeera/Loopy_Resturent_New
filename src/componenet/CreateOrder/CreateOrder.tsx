@@ -35,13 +35,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function CreateOrder() {
-    const [buyerList, setBuyerList] = useState<{  address: string; email: string; phone: string; item: string; }[]>([]);
+    const [buyerList, setBuyerList] = useState<{  address: string; email: string; phone: string; item: string;item2:string }[]>([]);
     const { updateSettingTable } = useOrderContext();
     const [buyerDetails, setBuyerDetails] = useState({
         address: "",
         email: "",
         phone: "",
         item: "",
+        item2:"",
     });
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>) => {
@@ -57,6 +58,13 @@ export default function CreateOrder() {
         setBuyerDetails(prevState => ({
             ...prevState,
             item: value,
+        }));
+    };
+    const handleSelectChange2 = (event: SelectChangeEvent<string>) => {
+        const value = event.target.value;
+        setBuyerDetails(prevState => ({
+            ...prevState,
+            item2: value,
         }));
     };
 
@@ -80,6 +88,7 @@ export default function CreateOrder() {
                 ...buyerDetails,
                 type: selectedValue,
                 item: selectedValue === 'KOT' ? buyerDetails.item : '',
+                item2:selectedValue === 'BOT' ? buyerDetails.item2 : '',
                 OrderNum: String(buyerList.length + 1),
                 orderType: orderType,
                 type1: Type,
@@ -94,7 +103,8 @@ export default function CreateOrder() {
                 address: "",
                 email: "",
                 phone: "",
-                item: ""
+                item: "",
+                item2:""
             });
         } else {
             console.error('Order type must be selected');
@@ -278,7 +288,7 @@ export default function CreateOrder() {
 
                                         <FormControl fullWidth>
                                             <InputLabel>BOT</InputLabel>
-                                            <Select value={buyerDetails.item} label="Item" name="item" onChange={handleSelectChange} variant="outlined" disabled={selectedValue === 'KOT'}>
+                                            <Select value={buyerDetails.item2} label="Item" name="item" onChange={handleSelectChange2} variant="outlined" disabled={selectedValue === 'KOT'}>
                                                 <MenuItem value="Milo">Milo</MenuItem>
                                                 <MenuItem value="Cocacola">Cocacola</MenuItem>
                                                 <MenuItem value="Fanta">Fanta</MenuItem>

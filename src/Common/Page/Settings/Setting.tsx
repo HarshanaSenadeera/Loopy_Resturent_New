@@ -146,7 +146,8 @@ export default function SettingMain() {
                                         <TableCell>{buyer.email}</TableCell>
                                         <TableCell>{buyer.phone}</TableCell>
                                         <TableCell>{buyer.type}</TableCell> {/* Displaying the selected radio button value */}
-                                        <TableCell>{buyer.type === 'KOT' ? buyer.item : ''}</TableCell> {/* Displaying the item only if KOT is selected */}
+                                        <TableCell>{buyer.type === 'KOT' ? buyer.item :buyer.item2}</TableCell> {/* Displaying the item only if KOT is selected */}
+                                        <TableCell><Button variant="outlined"  color="success" sx={{borderRadius: '20px' }}>pending</Button></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
