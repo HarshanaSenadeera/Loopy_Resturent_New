@@ -12,15 +12,17 @@ import Typography from "@mui/material/Typography";
 import AddNewDish from "../../AddDishes/AddDish";
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import {useOrderContext} from "./OrderProvider";
+import TableContainer from "@mui/material/TableContainer";
+
 
 export default function SettingMain() {
 
-
-    const [showComponent, setShowComponent] = useState(false);
-
-    const handleButtonClick = () => {
-        setShowComponent(true); // Set showComponent to true when button is clicked
-    };
 
     const [open, setOpen] = useState(false);
 
@@ -38,6 +40,7 @@ export default function SettingMain() {
     const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
     const isExtralargeScreen = useMediaQuery(theme.breakpoints.up('xl'));
 
+    const { buyerList } = useOrderContext();
 
 
     return (
@@ -111,6 +114,44 @@ export default function SettingMain() {
                                 <AddNewDish/>
                             </Box>
                         </Modal>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TableContainer>
+
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>OrderNum</TableCell>
+                                    <TableCell>Order Type</TableCell>
+                                    <TableCell>Table/Room</TableCell>
+                                    <TableCell>Table/Room Num</TableCell>
+                                    <TableCell>Address</TableCell>
+                                    <TableCell>Email</TableCell>
+                                    <TableCell>Phone</TableCell>
+                                    <TableCell>KOT/BOT</TableCell>
+                                    <TableCell>Item</TableCell>
+                                    <TableCell>status</TableCell>
+
+                                    {/* Adding a new TableCell for Item */}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {buyerList.map((buyer, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell>{buyer.OrderNum}</TableCell>
+                                        <TableCell>{buyer.orderType}</TableCell>
+                                        <TableCell>{buyer.type1}</TableCell>
+                                        <TableCell>{buyer.tableOrRoomNumber}</TableCell>
+                                        <TableCell>{buyer.address}</TableCell>
+                                        <TableCell>{buyer.email}</TableCell>
+                                        <TableCell>{buyer.phone}</TableCell>
+                                        <TableCell>{buyer.type}</TableCell> {/* Displaying the selected radio button value */}
+                                        <TableCell>{buyer.type === 'KOT' ? buyer.item : ''}</TableCell> {/* Displaying the item only if KOT is selected */}
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                        </TableContainer>
                     </Grid>
                 </Grid>
             </Box>

@@ -22,6 +22,7 @@ import TableHead from "@mui/material/TableHead";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import { ChangeEvent, FormEvent, useState } from "react";
+import {useOrderContext} from "../../Common/Page/Settings/OrderProvider";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,20 +32,12 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-interface Order {
-    OrderNum: string;
-    address: string;
-    email: string;
-    phone: string;
-    item: string;
-    type: string;
-}
 
-export default function CreateOrder({ updateTable }: { updateTable: (newOrder: Order) => void }) {
-    const [buyerList, setBuyerList] = useState<{OrderNum: string;  address: string; email: string; phone: string; item: string; }[]>([]);
 
+export default function CreateOrder() {
+    const [buyerList, setBuyerList] = useState<{  address: string; email: string; phone: string; item: string; }[]>([]);
+    const { updateSettingTable } = useOrderContext();
     const [buyerDetails, setBuyerDetails] = useState({
-        OrderNum: '',
         address: "",
         email: "",
         phone: "",
@@ -68,22 +61,44 @@ export default function CreateOrder({ updateTable }: { updateTable: (newOrder: O
     };
 
 
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const newBuyerDetails = {
-            ...buyerDetails,
-            type: selectedValue,
-            item: selectedValue === 'KOT' ? buyerDetails.item : '',
-            OrderNum: String(buyerList.length + 1),
-        };
-        updateTable(newBuyerDetails); // Notify the parent component about the new order
-        setBuyerDetails({
-            OrderNum: String(buyerList.length + 2),
-            address: "",
-            email: "",
-            phone: "",
-            item: ""
-        });
+
+        if (orderType) {
+            let tableOrRoomNumber = ''; // Initialize to empty string
+
+            if (orderType === 'Dining') {
+                if (Type === 'Table') {
+                    tableOrRoomNumber = tableType;
+                } else if (Type === 'Room') {
+                    tableOrRoomNumber = roomType;
+                }
+            }
+
+            const newBuyerDetails = {
+                ...buyerDetails,
+                type: selectedValue,
+                item: selectedValue === 'KOT' ? buyerDetails.item : '',
+                OrderNum: String(buyerList.length + 1),
+                orderType: orderType,
+                type1: Type,
+                tableOrRoomNumber: tableOrRoomNumber, // Set to appropriate value based on order type and table/room selection
+            };
+
+            // Update the SettingMain table data with the new order
+            updateSettingTable(newBuyerDetails);
+
+            // Reset the buyer details state
+            setBuyerDetails({
+                address: "",
+                email: "",
+                phone: "",
+                item: ""
+            });
+        } else {
+            console.error('Order type must be selected');
+        }
     };
 
 
@@ -98,6 +113,7 @@ export default function CreateOrder({ updateTable }: { updateTable: (newOrder: O
     const orderTypeOnChange = (event: SelectChangeEvent) => {
         setOrderType(event.target.value);
     };
+
     const typeOnChange = (event: SelectChangeEvent) => {
         setType(event.target.value);
     };

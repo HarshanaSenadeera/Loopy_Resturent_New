@@ -96,7 +96,7 @@ export default function ButtonSizes() {
                                 boxShadow: 24,
                                 p: 4,
                             }}>
-                                <CreateOrder updateTable={updateTable} />
+                                <CreateOrder  />
                             </Box>
                         </Modal>
                     </>

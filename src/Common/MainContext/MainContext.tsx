@@ -18,25 +18,29 @@ import FullFeaturedCrudGrid from "../../componenet/OrderTable/OrderTable";
 import {DefaultLayout} from "../Default Layout/DefaultLayout";
 import AddNewDish from "../AddDishes/AddDish";
 import SettingMain from "../Page/Settings/Setting";
+import {OrderProvider} from "../Page/Settings/OrderProvider";
 
 
 export const MainContext = () => {
     return (
         <div>
-            <CartProvider>
-                <Routes>
-                    <Route path="/" Component={DashMain}></Route>
-                    <Route path="/dish" Component={ButtonBaseDemo}></Route>
-                    <Route path="/user" Component={user}></Route>
-                    <Route path="/report" Component={ReportMain}></Route>
-                    <Route path="/byer" Component={Buyers}></Route>
-                    <Route path="/hotDish" Component={HotDishes}></Route>
-                    <Route path="/coldDish" Component={ColdDishes}></Route>
-                    <Route path="/orderTable" Component={FullFeaturedCrudGrid}></Route>
-                    <Route path="/addNewDish" Component={AddNewDish}></Route>
-                    <Route path="/setting" Component={SettingMain}></Route>
-                </Routes>
-            </CartProvider>
+            <OrderProvider>
+                <CartProvider>
+                    <Routes>
+                        <Route path="/" Component={DashMain}></Route>
+                        <Route path="/dish" Component={ButtonBaseDemo}></Route>
+                        <Route path="/user" Component={user}></Route>
+                        <Route path="/report" Component={ReportMain}></Route>
+                        <Route path="/byer" Component={Buyers}></Route>
+                        <Route path="/hotDish" Component={HotDishes}></Route>
+                        <Route path="/coldDish" Component={ColdDishes}></Route>
+                        <Route path="/orderTable" Component={FullFeaturedCrudGrid}></Route>
+                        <Route path="/addNewDish" Component={AddNewDish}></Route>
+                        <Route path="/setting" Component={SettingMain}></Route>
+                    </Routes>
+                </CartProvider>
+            </OrderProvider>
+
         </div>
     );
 };
