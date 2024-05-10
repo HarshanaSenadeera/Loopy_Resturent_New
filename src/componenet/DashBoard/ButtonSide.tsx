@@ -100,22 +100,37 @@ export default function ButtonSizes() {
 
 
                     <Grid item xs={4}>
-                        <Box sx={{
-                            '& button': {
-                                m: 1,
-                                width: '350px',
-                                height: '150px',
-                                backgroundColor: '#c52b18',
-                                color: 'white'
-                            }
-                        }}>
-                            <div>
-                                <Button variant="contained" size="large">
-                                    Create Order
-                                </Button>
+                        <Box
+                            sx={{
+                                '& div': {
+                                    m: 1,
+                                    width: '350px',
+                                    height: '150px',
+                                    backgroundColor: '#c52b18',
+                                    color: 'white',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    borderRadius: '8px',
+                                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                                },
+                                '& p': {
+                                    fontSize: '40px',
+                                    textAlign: 'center',
+                                },
+                            }}
+                        >
+                            <div style={{display:'flex' ,flexDirection:'column'}}>
+                                <Typography variant="h1" component="p">
+                                    500
+                                </Typography>
+                                <Typography variant="subtitle1" component="p">
+                                    Dining Orders
+                                </Typography>
                             </div>
                         </Box>
                     </Grid>
+
 
                     <Grid item xs={4}>
                         <Box sx={{
