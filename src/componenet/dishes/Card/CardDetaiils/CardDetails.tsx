@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import {useCart} from "../../SubDishes/CartProvider";
 
 interface DishItem {
     id: number;
@@ -20,6 +22,7 @@ interface DishItem {
 
 interface Props {
     dishes: DishItem[];
+
 }
 
 const CardDetails: React.FC<Props> = ({ dishes }) => {
@@ -49,6 +52,16 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
             delete updatedQuantities[id];
             return updatedQuantities;
         });
+    };
+    const navigate = useNavigate(); // Initialize useNavigate hook
+
+
+    const handleOrder = () => {
+        // Ensure cartItems and totalPrice are defined before navigating
+        if (dishes.length > 0 && totalPrice > 0) {
+            // Navigate to the order page with cart items and total price as route state
+            navigate('/order', { state: { cartItems: dishes, totalPrice: totalPrice } });
+        }
     };
 
     return (
@@ -97,7 +110,7 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
             ))}
 
             <Box sx={{display:'flex',justifyContent:'center',justifyItems:'center',paddingTop:'20px',paddingBottom:'20px'}}>
-                <Button variant="contained">
+                <Button variant="contained" onClick={handleOrder} >
                     Order
                 </Button>
             </Box>

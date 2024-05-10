@@ -17,8 +17,10 @@ import MenuItem from "@mui/material/MenuItem";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import {ChangeEvent, FormEvent, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useOrderContext} from "./OrderProvider";
+import CardDetails from "../../../componenet/dishes/Card/CardDetaiils/CardDetails";
+import OrderPage from "../../../componenet/dishes/Card/CardDetaiils/OrderPage";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -53,6 +55,7 @@ interface Props {
 }
 
 export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
+
     useEffect(() => {
         if (buyerList.length > 0) {
             const initialBuyer = buyerList[0]; // Get the first item from the list
@@ -189,12 +192,12 @@ export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
     };
 
     return (
-
-        <form onSubmit={handleSubmit}>
+        <div style={{ overflowY: 'auto', overflowX: 'auto', maxHeight: '500px', maxWidth: '100%' }}>
+        <form onSubmit={handleSubmit} >
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={12} lg={12}>
-                        <Card>
+                        <Card >
                             <CardHeader subheader="" title="Orders"/>
                             <Divider/>
                             <CardContent>
@@ -343,7 +346,7 @@ export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
                                             </Select>
                                         </FormControl>
                                     </Stack>
-
+<OrderPage/>
                                 </Stack>
                             </CardContent>
                             <Divider/>
@@ -360,6 +363,7 @@ export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
             </Box>
 
         </form>
+        </div>
     );
 }
 

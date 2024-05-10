@@ -19,6 +19,7 @@ import {DefaultLayout} from "../Default Layout/DefaultLayout";
 import AddNewDish from "../AddDishes/AddDish";
 import SettingMain from "../Page/Settings/Setting";
 import {OrderProvider} from "../Page/Settings/OrderProvider";
+import OrderPage from "../../componenet/dishes/Card/CardDetaiils/OrderPage";
 
 
 export const MainContext = () => {
@@ -37,6 +38,8 @@ export const MainContext = () => {
                         <Route path="/orderTable" Component={FullFeaturedCrudGrid}></Route>
                         <Route path="/addNewDish" Component={AddNewDish}></Route>
                         <Route path="/setting" Component={SettingMain}></Route>
+                        <Route path="/order" Component={OrderPage}></Route>
+
                     </Routes>
                 </CartProvider>
             </OrderProvider>
