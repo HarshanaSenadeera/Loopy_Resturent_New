@@ -19,12 +19,15 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import {useOrderContext} from "./OrderProvider";
 import TableContainer from "@mui/material/TableContainer";
+import {OrderEdit} from "./OrderEdit";
 
 
 export default function SettingMain() {
 
 
     const [open, setOpen] = useState(false);
+    const [open1, setOpen1] = useState(false);
+
 
     const handleOpen = () => {
         setOpen(true); // Set open to true to show the modal
@@ -32,6 +35,14 @@ export default function SettingMain() {
 
     const handleClose = () => {
         setOpen(false); // Set open to false to hide the modal
+    };
+
+    const handleOpen1 = () => {
+        setOpen1(true); // Set open to true to show the modal
+    };
+
+    const handleClose1 = () => {
+        setOpen1(false); // Set open to false to hide the modal
     };
 
     const theme = useTheme();
@@ -137,18 +148,29 @@ export default function SettingMain() {
                             </TableHead>
                             <TableBody>
                                 {buyerList.map((buyer, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{buyer.OrderNum}</TableCell>
-                                        <TableCell>{buyer.orderType}</TableCell>
-                                        <TableCell>{buyer.type1}</TableCell>
-                                        <TableCell>{buyer.tableOrRoomNumber}</TableCell>
-                                        <TableCell>{buyer.address}</TableCell>
-                                        <TableCell>{buyer.email}</TableCell>
-                                        <TableCell>{buyer.phone}</TableCell>
-                                        <TableCell>{buyer.type}</TableCell> {/* Displaying the selected radio button value */}
-                                        <TableCell>{buyer.type === 'KOT' ? buyer.item :buyer.item2}</TableCell> {/* Displaying the item only if KOT is selected */}
-                                        <TableCell><Button variant="outlined"  color="success" sx={{borderRadius: '20px' }}>pending</Button></TableCell>
-                                    </TableRow>
+                                    <React.Fragment>
+                                        <TableRow>
+                                            <TableCell>{buyer.OrderNum}</TableCell>
+                                            <TableCell>{buyer.orderType}</TableCell>
+                                            <TableCell>{buyer.type1}</TableCell>
+                                            <TableCell>{buyer.tableOrRoomNumber}</TableCell>
+                                            <TableCell>{buyer.address}</TableCell>
+                                            <TableCell>{buyer.email}</TableCell>
+                                            <TableCell>{buyer.phone}</TableCell>
+                                            <TableCell>{buyer.type}</TableCell>
+                                            <TableCell>{buyer.type === 'KOT' ? buyer.item : buyer.item2}</TableCell>
+                                            <TableCell>
+                                                <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} onClick={handleOpen1}>pending</Button>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        {/* Modal */}
+                                        <Modal open={open1} onClose={handleClose1}>
+                                            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 600 }}>
+                                                <OrderEdit buyerList={buyerList} />
+                                            </Box>
+                                        </Modal>
+                                    </React.Fragment>
                                 ))}
                             </TableBody>
                         </Table>

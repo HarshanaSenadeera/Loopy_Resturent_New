@@ -16,14 +16,9 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import TableHead from "@mui/material/TableHead";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import { ChangeEvent, FormEvent, useState } from "react";
-import {useOrderContext} from "../../Common/Page/Settings/OrderProvider";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {useOrderContext} from "./OrderProvider";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -35,15 +30,62 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export default function CreateOrder() {
-    const [buyerList, setBuyerList] = useState<{  address: string; email: string; phone: string; item: string;item2:string }[]>([]);
+interface Buyer {
+    orderType:string;
+    type1:string;
+    tableOrRoomNumber:string
+    address: string;
+    email: string;
+    phone: string;
+    item: string;
+    item2: string;
+    type:string,
+    OrderNum: string; // Add OrderNum property
+
+}
+
+interface Props {
+    buyerList: Buyer[];
+/*
+    setBuyerList: React.Dispatch<React.SetStateAction<Buyer[]>>; // Function to set buyerList state
+*/
+
+}
+
+export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
+    useEffect(() => {
+        if (buyerList.length > 0) {
+            const initialBuyer = buyerList[0]; // Get the first item from the list
+            setBuyerDetails({
+                orderType:initialBuyer.orderType,
+                type1:initialBuyer.type1,
+                tableOrRoomNumber:initialBuyer.tableOrRoomNumber,
+                address: initialBuyer.address,
+                email: initialBuyer.email,
+                phone: initialBuyer.phone,
+                item: initialBuyer.item,
+                item2: initialBuyer.item2,
+                type:initialBuyer.type
+            });
+            setSelectedValue(initialBuyer.type === 'KOT' ? 'KOT' : 'BOT');
+
+        }
+    }, [buyerList]);
+
+
     const { updateSettingTable } = useOrderContext();
     const [buyerDetails, setBuyerDetails] = useState({
+        orderType:"",
+        type1:"",
+        tableOrRoomNumber:"",
         address: "",
         email: "",
         phone: "",
         item: "",
         item2:"",
+        type:"",
+
+
     });
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | { name?: string; value: unknown }>) => {
@@ -101,6 +143,10 @@ export default function CreateOrder() {
 
             // Reset the buyer details state
             setBuyerDetails({
+                type:"",
+                orderType:"",
+                type1:"",
+                tableOrRoomNumber:"",
                 address: "",
                 email: "",
                 phone: "",
@@ -163,7 +209,7 @@ export default function CreateOrder() {
                                                         label="KOT"
                                                         checked={selectedValue === 'KOT'}
                                                         onChange={handleChange}
-                                                        value="KOT"
+                                                        value={buyerDetails.type}
                                                         name="radio-buttons"
                                                         slotProps={{ input: { 'aria-label': 'A' } }}
                                                     />
@@ -171,7 +217,7 @@ export default function CreateOrder() {
                                                         label="BOT"
                                                         checked={selectedValue === 'BOT'}
                                                         onChange={handleChange}
-                                                        value="BOT"
+                                                        value={buyerDetails.type}
                                                         name="radio-buttons"
                                                         slotProps={{ input: { 'aria-label': 'B' } }}
                                                     />
@@ -186,7 +232,7 @@ export default function CreateOrder() {
                                                     <Select
                                                         labelId="demo-select-small-label-1"
                                                         id="demo-select-small-1"
-                                                        value={orderType}
+                                                        value={buyerDetails.orderType}
                                                         label="Age"
                                                         onChange={orderTypeOnChange}
                                                     >
@@ -210,7 +256,7 @@ export default function CreateOrder() {
                                                 <Select
                                                     labelId="demo-select-small-label-1"
                                                     id="demo-select-small-1"
-                                                    value={Type}
+                                                    value={buyerDetails.type1}
                                                     label="Type"
                                                     onChange={typeOnChange}
                                                 >
@@ -227,7 +273,7 @@ export default function CreateOrder() {
                                                 <Select
                                                     labelId="demo-select-small-label-2"
                                                     id="demo-select-small-2"
-                                                    value={tableType}
+                                                    value={buyerDetails.tableOrRoomNumber}
                                                     label="Table"
                                                     onChange={tableTypeOnChange}
                                                     disabled={Type === 'Room'}
@@ -261,7 +307,6 @@ export default function CreateOrder() {
                                         </Stack>
                                     )}
 
-
                                     <FormControl fullWidth required>
                                         <InputLabel>Address</InputLabel>
                                         <OutlinedInput label="Address" name="address" value={buyerDetails.address} onChange={handleInputChange}  disabled={Type === 'Room' || Type === 'Table'}/>
@@ -289,7 +334,7 @@ export default function CreateOrder() {
 
                                         <FormControl fullWidth>
                                             <InputLabel>BOT</InputLabel>
-                                            <Select value={buyerDetails.item2} label="Item" name="item" onChange={handleSelectChange2} variant="outlined" disabled={selectedValue === 'KOT'}>
+                                            <Select value={buyerDetails.item2} label="Item" name="item"  onChange={handleSelectChange2} variant="outlined" disabled={selectedValue === 'KOT'}>
                                                 <MenuItem value="Milo">Milo</MenuItem>
                                                 <MenuItem value="Cocacola">Cocacola</MenuItem>
                                                 <MenuItem value="Fanta">Fanta</MenuItem>
@@ -303,11 +348,11 @@ export default function CreateOrder() {
                             </CardContent>
                             <Divider/>
                             <CardActions sx={{justifyContent: 'flex-end'}}>
-                                <Link to='/setting'>
-                                    <Button type="submit" variant="contained">View Detail</Button>
+                                <Link to='/dish'>
+                                    <Button type="submit" variant="contained">Add Item</Button>
                                 </Link>
 
-                                <Button type="submit" variant="contained">Save Order</Button>
+                                <Button type="submit" variant="contained" >Edit Detail</Button>
                             </CardActions>
                         </Card>
                     </Grid>

@@ -35,9 +35,6 @@ export default function ButtonSizes() {
     const handleClose = () => {
         setOpen(false);
     };
-    const updateTable = (newOrder: Order) => {
-        setBuyerList(prevList => [...prevList, newOrder]);
-    };
 
 
     return (

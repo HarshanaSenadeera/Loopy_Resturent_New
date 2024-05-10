@@ -24,6 +24,7 @@ interface Props {
 
 const CardDetails: React.FC<Props> = ({ dishes }) => {
     const [quantities, setQuantities] = React.useState<{ [id: number]: number }>({});
+    const [totalPrice, setTotalPrice] = React.useState<number>(0);
 
     const handleChange = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const enteredValue = event.target.value ? parseInt(event.target.value, 10) : 0;
@@ -33,8 +34,21 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
         }));
     };
 
+    React.useEffect(() => {
+        let total = 0;
+        dishes.forEach(dish => {
+            const quantity = quantities[dish.id] || dish.quantity;
+            total += dish.price * quantity;
+        });
+        setTotalPrice(total);
+    }, [quantities, dishes]);
+
     const handleDelete = (id: number) => {
-        // Implement delete logic here
+        setQuantities(prevState => {
+            const updatedQuantities = { ...prevState };
+            delete updatedQuantities[id];
+            return updatedQuantities;
+        });
     };
 
     return (
