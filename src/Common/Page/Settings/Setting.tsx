@@ -169,7 +169,7 @@ export default function SettingMain() {
 
                                         {/* Modal */}
                                         <Modal open={open1} onClose={handleClose1}>
-                                            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 600 }}>
+                                            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 1500 }}>
                                                 <OrderEdit buyerList={buyerList} />
                                             </Box>
                                         </Modal>
