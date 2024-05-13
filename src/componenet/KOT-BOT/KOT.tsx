@@ -92,7 +92,7 @@ function EditToolbar(props: EditToolbarProps) {
     return (
         <GridToolbarContainer>
             <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-                Add record
+                Add KOT Item
             </Button>
         </GridToolbarContainer>
     );

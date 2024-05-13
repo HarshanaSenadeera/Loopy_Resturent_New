@@ -11,16 +11,19 @@ const KOMain = () => {
         <div>
 
             <Typography variant="h5">KOT Orders</Typography>
+            <hr/>
             <Typography>
                 <KOT/>
             </Typography>
-            <Divider />
 
-            <Typography variant="h5">BOT Orders</Typography>
+
+            <Typography variant="h5" sx={{
+                mt:'40px'
+            }}>BOT Orders</Typography>
+            <hr/>
             <Typography>
                 <BOT/>
             </Typography>
-
 
 
         </div>
