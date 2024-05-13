@@ -316,7 +316,7 @@ export default function CreateOrder() {
                                         </Stack>
                                     )}
 
-                                    {orderType == 'Take Away' &&(
+                                    {orderType == 'Online' &&(
                                         <FormControl fullWidth required>
                                             <InputLabel>Address</InputLabel>
                                             <OutlinedInput label="Address" name="address" value={buyerDetails.address}
@@ -325,7 +325,7 @@ export default function CreateOrder() {
                                         </FormControl>
 
                                     )}
-                                    {orderType == 'Take Away' &&(
+                                    {orderType == 'Online' &&(
                                     <FormControl fullWidth required>
                                         <InputLabel>Email</InputLabel>
                                         <OutlinedInput label="Email" name="email" value={buyerDetails.email}
@@ -334,15 +334,18 @@ export default function CreateOrder() {
                                     </FormControl>
                                     )}
 
-                                    {orderType == 'Take Away' || orderType == 'Online' && (
-
+                                    {(orderType === 'Online' || orderType === 'Take Away') && (
                                         <FormControl fullWidth required>
-                                        <InputLabel>Phone</InputLabel>
-                                        <OutlinedInput label="Phone" name="phone" value={buyerDetails.phone}
-                                                       onChange={handleInputChange}
-                                                      />
-                                    </FormControl>
+                                            <InputLabel>Phone</InputLabel>
+                                            <OutlinedInput
+                                                label="Phone"
+                                                name="phone"
+                                                value={buyerDetails.phone}
+                                                onChange={handleInputChange}
+                                            />
+                                        </FormControl>
                                     )}
+
                                     <Stack direction="row" spacing={2} sx={{width: '100%'}}>
                                         {kotChecked == true &&(
                                             <FormControl fullWidth>

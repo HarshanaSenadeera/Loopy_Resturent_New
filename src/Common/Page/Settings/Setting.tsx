@@ -154,16 +154,18 @@ export default function SettingMain() {
                                             <TableCell>{buyer.orderType}</TableCell>
                                             <TableCell>{buyer.type1}</TableCell>
                                             <TableCell>{buyer.tableOrRoomNumber}</TableCell>
-                                            <TableCell>{buyer.address}</TableCell>
-                                            <TableCell>{buyer.email}</TableCell>
-                                            <TableCell>{buyer.phone}</TableCell>
+                                                    <TableCell>{buyer.address}</TableCell>
+                                                    <TableCell>{buyer.email}</TableCell>
+                                                    <TableCell>{buyer.phone}</TableCell>
+
+
                                             <TableCell>{buyer.type}</TableCell>
                                             <TableCell>{buyer.type === 'KOT' ? buyer.item : buyer.item2}</TableCell>
                                             <TableCell>
                                                 <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} >pending</Button>
                                             </TableCell>
                                             <TableCell>
-                                                <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} onClick={handleOpen1}>View Details</Button>
+                                                <Button variant="contained"    sx={{ borderRadius: '10px',width:'130px',hieght:'20px',fontSize:'12px'}} onClick={handleOpen1}>View Details</Button>
                                             </TableCell>
                                         </TableRow>
 
