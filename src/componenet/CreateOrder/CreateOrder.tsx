@@ -344,7 +344,8 @@ export default function CreateOrder() {
                                     </FormControl>
                                     )}
                                     <Stack direction="row" spacing={2} sx={{width: '100%'}}>
-                                        <FormControl fullWidth>
+                                        {kotChecked == true &&(
+                                            <FormControl fullWidth>
                                             <InputLabel>KOT</InputLabel>
                                             <Select value={buyerDetails.item} label="Item" name="item"
                                                     onChange={handleSelectChange} variant="outlined"
@@ -356,8 +357,10 @@ export default function CreateOrder() {
                                                 <MenuItem value="Sprit">Sprit</MenuItem>
                                             </Select>
                                         </FormControl>
+                                            )}
 
-                                        <FormControl fullWidth>
+                                        {botChecked == true &&(
+                                            <FormControl fullWidth>
                                             <InputLabel>BOT</InputLabel>
                                             <Select value={buyerDetails.item2} label="Item" name="item"
                                                     onChange={handleSelectChange2} variant="outlined"
@@ -369,6 +372,7 @@ export default function CreateOrder() {
                                                 <MenuItem value="Sprit">Sprit</MenuItem>
                                             </Select>
                                         </FormControl>
+                                            )}
                                     </Stack>
 
                                 </Stack>
