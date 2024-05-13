@@ -3,6 +3,7 @@ import KOT from "./KOT";
 import Typography from "@mui/material/Typography";
 import BOT from "./BOT";
 import Divider from "@mui/material/Divider";
+import {text} from "node:stream/consumers";
 
 const KOMain = () => {
 
@@ -24,7 +25,6 @@ const KOMain = () => {
             <Typography>
                 <BOT/>
             </Typography>
-
 
         </div>
     )
