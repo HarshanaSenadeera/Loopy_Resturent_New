@@ -10,11 +10,6 @@ import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
 import NumCardTwo from "../../../componenet/DashBoard/NumCardTwo";
 
 
-
-
-
-
-
 export const DashMain = () => {
     return (
         <Grid container rowSpacing={5}>

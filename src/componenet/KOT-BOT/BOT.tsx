@@ -33,41 +33,7 @@ const randomRole = () => {
 };
 
 const initialRows: GridRowsProp = [
-    /*{
-        id: randomId(),
-        name: randomTraderName(),
-        age: 25,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 36,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 19,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 28,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 23,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },*/
+
 ];
 
 interface EditToolbarProps {
@@ -98,7 +64,7 @@ function EditToolbar(props: EditToolbarProps) {
     );
 }
 
-export default function KOT() {
+export default function BOT() {
     const [rows, setRows] = React.useState(initialRows);
     const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({});
 
@@ -143,10 +109,9 @@ export default function KOT() {
     };
 
     const columns: GridColDef[] = [
-        { field: 'name', headerName: 'Name', width: 180, editable: true },
         {
-            field: 'age',
-            headerName: 'Age',
+            field: 'id',
+            headerName: 'ID',
             type: 'number',
             width: 80,
             align: 'left',
@@ -154,14 +119,7 @@ export default function KOT() {
             editable: true,
         },
         {
-            field: 'joinDate',
-            headerName: 'Join date',
-            type: 'date',
-            width: 180,
-            editable: true,
-        },
-        {
-            field: 'role',
+            field: 'description',
             headerName: 'Department',
             width: 220,
             editable: true,
