@@ -134,14 +134,16 @@ export default function SettingMain() {
                                 <TableRow>
                                     <TableCell>OrderNum</TableCell>
                                     <TableCell>Order Type</TableCell>
-                                    <TableCell>Table/Room</TableCell>
+                                   {/* <TableCell>Table/Room</TableCell>
                                     <TableCell>Table/Room Num</TableCell>
                                     <TableCell>Address</TableCell>
                                     <TableCell>Email</TableCell>
-                                    <TableCell>Phone</TableCell>
+                                    <TableCell>Phone</TableCell>*/}
                                     <TableCell>KOT/BOT</TableCell>
                                     <TableCell>Item</TableCell>
                                     <TableCell>status</TableCell>
+                                    <TableCell>View</TableCell>
+
 
                                     {/* Adding a new TableCell for Item */}
                                 </TableRow>
@@ -152,15 +154,20 @@ export default function SettingMain() {
                                         <TableRow>
                                             <TableCell>{buyer.OrderNum}</TableCell>
                                             <TableCell>{buyer.orderType}</TableCell>
-                                            <TableCell>{buyer.type1}</TableCell>
+                                          {/*  <TableCell>{buyer.type1}</TableCell>
                                             <TableCell>{buyer.tableOrRoomNumber}</TableCell>
                                                     <TableCell>{buyer.address}</TableCell>
                                                     <TableCell>{buyer.email}</TableCell>
                                                     <TableCell>{buyer.phone}</TableCell>
-
+*/}
 
                                             <TableCell>{buyer.type}</TableCell>
-                                            <TableCell>{buyer.type === 'KOT' ? buyer.item : buyer.item2}</TableCell>
+                                            <TableCell>
+
+                                                {buyer.type === 'KOT' && buyer.item}
+                                                {buyer.type === 'BOT' && buyer.item2}
+                                                {buyer.type === 'KOT and BOT' && `${buyer.item} and ${buyer.item2}`}
+                                            </TableCell>
                                             <TableCell>
                                                 <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} >pending</Button>
                                             </TableCell>
@@ -172,7 +179,7 @@ export default function SettingMain() {
                                         {/* Modal */}
                                         <Modal open={open1} onClose={handleClose1}>
                                             <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 1500 }}>
-                                                <OrderEdit buyerList={buyerList} />
+                                                <OrderEdit />
                                             </Box>
                                         </Modal>
                                     </React.Fragment>

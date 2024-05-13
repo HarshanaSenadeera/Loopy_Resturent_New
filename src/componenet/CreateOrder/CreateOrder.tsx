@@ -73,6 +73,7 @@ export default function CreateOrder() {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        let selectedItem;
         if (orderType) {
             let tableOrRoomNumber = ''; // Initialize to empty string
 
@@ -83,12 +84,21 @@ export default function CreateOrder() {
                     tableOrRoomNumber = roomType;
                 }
             }
+            let selectedItem = '';
+            if (kotChecked && botChecked) {
+                selectedItem = 'KOT and BOT';
+            } else if (kotChecked) {
+                selectedItem = 'KOT';
+            } else if (botChecked) {
+                selectedItem = 'BOT';
+            }
 
             const newBuyerDetails = {
                 ...buyerDetails,
-                type: selectedValue,
-                item: selectedValue === 'KOT' ? buyerDetails.item : '',
-                item2: selectedValue === 'BOT' ? buyerDetails.item2 : '',
+                type: selectedItem,
+                item: kotChecked ? buyerDetails.item : '',
+                item2: botChecked ? buyerDetails.item2 : '',
+                waiterType:waiterType,
                 OrderNum: String(buyerList.length + 1),
                 orderType: orderType,
                 type1: Type,
@@ -321,7 +331,7 @@ export default function CreateOrder() {
                                             <InputLabel>Address</InputLabel>
                                             <OutlinedInput label="Address" name="address" value={buyerDetails.address}
                                                            onChange={handleInputChange}
-                                                           disabled={Type === 'Room' || Type === 'Table'}/>
+                                                          />
                                         </FormControl>
 
                                     )}
@@ -330,7 +340,7 @@ export default function CreateOrder() {
                                         <InputLabel>Email</InputLabel>
                                         <OutlinedInput label="Email" name="email" value={buyerDetails.email}
                                                        onChange={handleInputChange}
-                                                       disabled={Type === 'Room' || Type === 'Table'}/>
+                                                      />
                                     </FormControl>
                                     )}
 

@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 interface Order {
     OrderNum: string;
     orderType:string;
+    waiterType:string;
     type1:string;
     tableOrRoomNumber:string;
     address: string;
