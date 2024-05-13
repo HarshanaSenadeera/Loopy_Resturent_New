@@ -3,6 +3,7 @@ import KOT from "./KOT";
 import Typography from "@mui/material/Typography";
 import BOT from "./BOT";
 import Divider from "@mui/material/Divider";
+import {text} from "node:stream/consumers";
 
 const KOMain = () => {
 
@@ -11,17 +12,19 @@ const KOMain = () => {
         <div>
 
             <Typography variant="h5">KOT Orders</Typography>
+            <hr/>
             <Typography>
                 <KOT/>
             </Typography>
-            <Divider />
 
-            <Typography variant="h5">BOT Orders</Typography>
+
+            <Typography variant="h5" sx={{
+                mt:'40px'
+            }}>BOT Orders</Typography>
+            <hr/>
             <Typography>
                 <BOT/>
             </Typography>
-
-
 
         </div>
     )

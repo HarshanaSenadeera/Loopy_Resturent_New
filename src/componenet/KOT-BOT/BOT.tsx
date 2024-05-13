@@ -33,7 +33,41 @@ const randomRole = () => {
 };
 
 const initialRows: GridRowsProp = [
-
+    /*{
+        id: randomId(),
+        name: randomTraderName(),
+        age: 25,
+        joinDate: randomCreatedDate(),
+        role: randomRole(),
+    },
+    {
+        id: randomId(),
+        name: randomTraderName(),
+        age: 36,
+        joinDate: randomCreatedDate(),
+        role: randomRole(),
+    },
+    {
+        id: randomId(),
+        name: randomTraderName(),
+        age: 19,
+        joinDate: randomCreatedDate(),
+        role: randomRole(),
+    },
+    {
+        id: randomId(),
+        name: randomTraderName(),
+        age: 28,
+        joinDate: randomCreatedDate(),
+        role: randomRole(),
+    },
+    {
+        id: randomId(),
+        name: randomTraderName(),
+        age: 23,
+        joinDate: randomCreatedDate(),
+        role: randomRole(),
+    },*/
 ];
 
 interface EditToolbarProps {
@@ -58,7 +92,7 @@ function EditToolbar(props: EditToolbarProps) {
     return (
         <GridToolbarContainer>
             <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-                Add record
+                Add BOT Item
             </Button>
         </GridToolbarContainer>
     );
@@ -110,22 +144,23 @@ export default function BOT() {
 
     const columns: GridColDef[] = [
         {
-            field: 'id',
-            headerName: 'ID',
-            type: 'number',
-            width: 80,
-            align: 'left',
-            headerAlign: 'left',
+            field: 'dish',
+            headerName: 'Main Dishes',
+            width: 220,
             editable: true,
+            type: 'singleSelect',
+            valueOptions: ['Beer', 'Arrack', 'Gold'],
         },
+
         {
-            field: 'description',
-            headerName: 'Department',
+            field: 'department',
+            headerName: 'Sub Items',
             width: 220,
             editable: true,
             type: 'singleSelect',
             valueOptions: ['Market', 'Finance', 'Development'],
         },
+
         {
             field: 'actions',
             type: 'actions',
