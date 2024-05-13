@@ -351,7 +351,7 @@ export const OrderEdit: React.FC<Props> = ({ buyerList }) => {
                             </CardContent>
                             <Divider/>
                             <CardActions sx={{justifyContent: 'flex-end'}}>
-                                <Link to='/dish'>
+                                <Link to='/KO'>
                                     <Button type="submit" variant="contained">Add Item</Button>
                                 </Link>
 
