@@ -8,7 +8,6 @@ import CreateOrder from "../../../componenet/CreateOrder/CreateOrder";
 import {Receipt} from "@mui/icons-material";
 import {useState} from "react";
 import {LocalPharmacyOutlined} from "@material-ui/icons";
-import Typography from "@mui/material/Typography";
 import AddNewDish from "../../AddDishes/AddDish";
 import {useTheme} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
@@ -19,26 +18,28 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import {useOrderContext} from "./OrderProvider";
 import TableContainer from "@mui/material/TableContainer";
-import {OrderEdit} from "./OrderEdit";
+import OrderEdit from "./OrderEdit";
 
 
 export default function SettingMain() {
 
+    const [selectedBuyer, setSelectedBuyer] = useState(null);
 
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = useState(false);
 
 
-    const handleOpen = () => {
-        setOpen(true); // Set open to true to show the modal
+    const handleOpen1 = (buyer:any) => {
+        setSelectedBuyer(buyer);
+        setOpen1(true);
     };
 
     const handleClose = () => {
         setOpen(false); // Set open to false to hide the modal
     };
 
-    const handleOpen1 = () => {
-        setOpen1(true); // Set open to true to show the modal
+    const handleOpen = () => {
+        setOpen(true); // Set open to true to show the modal
     };
 
     const handleClose1 = () => {
@@ -172,14 +173,14 @@ export default function SettingMain() {
                                                 <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} >pending</Button>
                                             </TableCell>
                                             <TableCell>
-                                                <Button variant="contained"    sx={{ borderRadius: '10px',width:'130px',hieght:'20px',fontSize:'12px'}} onClick={handleOpen1}>View Details</Button>
+                                                <Button variant="contained"    sx={{ borderRadius: '10px',width:'130px',hieght:'20px',fontSize:'12px'}}  onClick={() => handleOpen1(buyer)}>View Details</Button>
                                             </TableCell>
                                         </TableRow>
 
                                         {/* Modal */}
                                         <Modal open={open1} onClose={handleClose1}>
-                                            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, width: 1500 }}>
-                                                <OrderEdit />
+                                            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', boxShadow: 24, p: 4, borderRadius: '15px' }}>
+                                                {selectedBuyer && <OrderEdit buyer={selectedBuyer} />}
                                             </Box>
                                         </Modal>
                                     </React.Fragment>
