@@ -19,6 +19,7 @@ import TableBody from "@mui/material/TableBody";
 import {useOrderContext} from "./OrderProvider";
 import TableContainer from "@mui/material/TableContainer";
 import OrderEdit from "./OrderEdit";
+import { Link } from "react-router-dom";
 
 
 export default function SettingMain() {
@@ -170,7 +171,9 @@ export default function SettingMain() {
                                                 {buyer.type === 'KOT and BOT' && `${buyer.item} and ${buyer.item2}`}
                                             </TableCell>
                                             <TableCell>
+
                                                 <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} >pending</Button>
+
                                             </TableCell>
                                             <TableCell>
                                                 <Button variant="contained"    sx={{ borderRadius: '10px',width:'130px',hieght:'20px',fontSize:'12px'}}  onClick={() => handleOpen1(buyer)}>View Details</Button>

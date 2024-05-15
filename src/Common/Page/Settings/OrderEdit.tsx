@@ -77,9 +77,10 @@ const OrderEdit: React.FC<{ buyer: any }> = ({ buyer }) => {
 
             </Grid>
             <Grid container xs={12} sx={{padding:'10px',display:'flex',gap:'10px',justifyContent:'flex-end'}} >
-                <Link to='/setting'>
+                <Link to='/KO'>
                     <Button type="submit" variant="contained">Add Item</Button>
                 </Link>
+
                 <Button type="submit" variant="contained">Edit</Button>
             </Grid>
         </Box>

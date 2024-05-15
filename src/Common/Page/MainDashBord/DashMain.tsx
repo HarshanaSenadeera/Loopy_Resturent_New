@@ -4,10 +4,10 @@ import Grid from "@mui/material/Grid";
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import ButtonSizes from "../../../componenet/DashBoard/ButtonSide";
+import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
+import NumCardTwo from "../../../componenet/DashBoard/NumCardTwo";
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
-import ButtonSizes from "../../../componenet/dashboard/ButtonSide";
-import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
-import NumCardTwo from "../../../componenet/dashboard/NumCardTwo";
 
 
 
