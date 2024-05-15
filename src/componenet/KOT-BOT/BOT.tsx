@@ -19,6 +19,7 @@ import {
     GridRowModel,
     GridRowEditStopReasons,
     GridSlots,
+    GridRenderEditCellParams,
 } from '@mui/x-data-grid';
 import {
     randomCreatedDate,
@@ -32,43 +33,7 @@ const randomRole = () => {
     return randomArrayItem(roles);
 };
 
-const initialRows: GridRowsProp = [
-    /*{
-        id: randomId(),
-        name: randomTraderName(),
-        age: 25,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 36,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 19,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 28,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },
-    {
-        id: randomId(),
-        name: randomTraderName(),
-        age: 23,
-        joinDate: randomCreatedDate(),
-        role: randomRole(),
-    },*/
-];
+const initialRows: GridRowsProp = [];
 
 interface EditToolbarProps {
     setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
@@ -82,10 +47,10 @@ function EditToolbar(props: EditToolbarProps) {
 
     const handleClick = () => {
         const id = randomId();
-        setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
+        setRows((oldRows) => [...oldRows, { id, dish: '', subDish: '', isNew: true }]);
         setRowModesModel((oldModel) => ({
             ...oldModel,
-            [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+            [id]: { mode: GridRowModes.Edit, fieldToFocus: 'dish' },
         }));
     };
 
@@ -153,12 +118,46 @@ export default function BOT() {
         },
 
         {
-            field: 'department',
+            field: 'subDish',
             headerName: 'Sub Items',
             width: 220,
             editable: true,
             type: 'singleSelect',
-            valueOptions: ['Market', 'Finance', 'Development'],
+            renderEditCell: (params: GridRenderEditCellParams) => (
+                <select
+                    value={params.value}
+                    onChange={(e) => {
+                        const newValue = e.target.value;
+                        const field = params.field!;
+                        const id = params.id!;
+                        setRows(rows.map((row) => (row.id === id ? { ...row, [field]: newValue } : row)));
+                    }}
+                >
+                    {params.row.dish === 'Beer' && (
+                        <>
+                            <option value="Beer Sub 1">Beer Sub 1</option>
+                            <option value="Beer Sub 2">Beer Sub 2</option>
+                            <option value="Beer Sub 3">Beer Sub 3</option>
+                        </>
+                    )}
+
+                    {params.row.dish === 'Arrack' && (
+                        <>
+                            <option value="Arrack Sub 1">Arrack Sub 1</option>
+                            <option value="Arrack Sub 2">Arrack Sub 2</option>
+                            <option value="Arrack Sub 3">Arrack Sub 3</option>
+                        </>
+                    )}
+
+                    {params.row.dish === 'Gold' && (
+                        <>
+                            <option value="Gold Sub 1">Gold Sub 1</option>
+                            <option value="Gold Sub 2">Gold Sub 2</option>
+                            <option value="Gold Sub 3">Gold Sub 3</option>
+                        </>
+                    )}
+                </select>
+            ),
         },
 
         {
