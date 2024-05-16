@@ -113,42 +113,50 @@ const OrderEdit: React.FC<{
                             <Grid container spacing={2} sx={{marginBottom: '16px'}}>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="subtitle1" gutterBottom>
-                                        <span style={{fontWeight: 600}}>Order Type:</span> {buyer.orderType}
+                                        <span style={{fontWeight: 600}}>Order Type:</span> {buyer.orderType ? buyer.orderType :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Table/Room: </span>{buyer.tableOrRoomNumber}
+                                        <span style={{fontWeight: 600}}>Table/Room: </span>{buyer.tableOrRoomNumber ? buyer.tableOrRoomNumber :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Table:</span> {buyer.tableOrRoomNumber}
+                                        <span style={{fontWeight: 600}}>Table:</span> {buyer.tableOrRoomNumber ? buyer.tableOrRoomNumber :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Address:</span> {buyer.address}
+                                        <span style={{fontWeight: 600}}>Address:</span> {buyer.address ? buyer.address :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Email:</span> {buyer.email}
+                                        <span style={{fontWeight: 600}}>Email:</span> {buyer.email ? buyer.email :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Phone: </span>{buyer.phone}
+                                        <span style={{fontWeight: 600}}>Phone: </span>{buyer.phone ? buyer.phone :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Type: </span>{buyer.type}
+                                        <span style={{fontWeight: 600}}>Type: </span>{buyer.type ? buyer.type :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Waiter: </span>{buyer.waiterType}
+                                        <span style={{fontWeight: 600}}>Waiter: </span>{buyer.waiterType ? buyer.waiterType :
+                                        <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                             </Grid>
