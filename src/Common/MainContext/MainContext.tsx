@@ -21,6 +21,7 @@ import SettingMain from "../Page/Settings/Setting";
 import {OrderProvider} from "../Page/Settings/OrderProvider";
 import OrderPage from "../../componenet/dishes/Card/CardDetaiils/OrderPage";
 import KOMain from "../../componenet/KOT-BOT/KOMain";
+import {Invoice} from "../../componenet/Invoice/Invoice";
 
 
 export const MainContext = () => {
@@ -41,7 +42,7 @@ export const MainContext = () => {
                         <Route path="/setting" Component={SettingMain}></Route>
                         <Route path="/order" Component={OrderPage}></Route>
                         <Route path="/KO" Component={KOMain}></Route>
-
+                        <Route path="/invoice" Component={Invoice}></Route>
                     </Routes>
                 </CartProvider>
             </OrderProvider>
