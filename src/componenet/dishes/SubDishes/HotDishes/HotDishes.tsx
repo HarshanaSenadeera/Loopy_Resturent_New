@@ -12,7 +12,6 @@ import pic2 from "../../../../images/kottu beef.png";
 import { useCart } from "../CartProvider";
 import CardDetails from "../../Card/CardDetaiils/CardDetails";
 import {Modal} from "@mui/joy";
-import ProfileForm from "../../../EditDish/EditDish";
 import EditDish from "../../../EditDish/EditDish";
 import {Close} from "@material-ui/icons";
 import IconButton from "@mui/material/IconButton";

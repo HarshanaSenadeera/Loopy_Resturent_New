@@ -8,11 +8,6 @@ import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import {Liquor, OutdoorGrill, TableBar} from "@mui/icons-material";
 import {red} from "@mui/material/colors";
-import {styled} from "@mui/system";
-import Paper from "@mui/material/Paper";
-
-
-
 export default function ResponsiveGrid() {
     return (
         <>
