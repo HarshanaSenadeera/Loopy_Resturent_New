@@ -18,11 +18,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {SelectChangeEvent, Stack} from "@mui/material";
+import {SelectChangeEvent, Stack, tableCellClasses} from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import TableContainer from "@mui/material/TableContainer";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
 
 
 const Item = styled(Paper)(({theme}) => ({
@@ -88,6 +94,26 @@ const OrderEdit: React.FC<{
         setDishesItem(event.target.value);
     };
 
+    const [selectedItem, setSelectedItem] = useState('');
+
+    const [rows, setRows] = useState([]);
+
+    const handleAddButtonClick = () => {
+        // Create a new row object with some default data
+        const newRow = {
+            dishName: 'New Dish',
+            price: 10,
+            qty: 1,
+            amount: 10
+        };
+        // Update the rows state by adding the new row
+        /*setRows(prevRows => [...prevRows, newRow]);*/
+    };
+
+    const handleChange = (event:any) => {
+        setSelectedItem(event.target.value);
+    };
+
 
     useEffect(() => {
         let items: string[] = [];
@@ -100,8 +126,32 @@ const OrderEdit: React.FC<{
         }
         setRelevantDishesItems(items);
     }, [DishesType]);
+
+    /*Table content*/
+
+
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+        [`&.${tableCellClasses.head}`]: {
+            backgroundColor: theme.palette.common.black,
+            color: theme.palette.common.white,
+        },
+        [`&.${tableCellClasses.body}`]: {
+            fontSize: 14,
+        },
+    }));
+
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+            border: 0,
+        },
+    }));
+
     return (
-        <Box sx={{overflowY: 'auto', borderRadius: '20px'}}>
+        <Box sx={{overflowY: 'auto', borderRadius: '20px' , maxHeight:600}}>
             <Grid container spacing={3} sx={{display: 'flex', flexDirection: 'column'}}>
                 <Grid item xs={12}>
                     <Card sx={{width: '100%'}}>
@@ -113,19 +163,22 @@ const OrderEdit: React.FC<{
                             <Grid container spacing={2} sx={{marginBottom: '16px'}}>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="subtitle1" gutterBottom>
-                                        <span style={{fontWeight: 600}}>Order Type:</span> {buyer.orderType ? buyer.orderType :
+                                        <span
+                                            style={{fontWeight: 600}}>Order Type:</span> {buyer.orderType ? buyer.orderType :
                                         <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Table/Room: </span>{buyer.tableOrRoomNumber ? buyer.tableOrRoomNumber :
+                                        <span style={{fontWeight: 600}}>Table/Room: </span>{buyer.type1 ? buyer.type1 :
                                         <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Table:</span> {buyer.tableOrRoomNumber ? buyer.tableOrRoomNumber :
+                                        <span style={{fontWeight: 600}}>
+
+                                            {buyer.type1}:</span> {buyer.tableOrRoomNumber ? buyer.tableOrRoomNumber :
                                         <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
@@ -155,16 +208,45 @@ const OrderEdit: React.FC<{
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4}>
                                     <Typography variant="body1">
-                                        <span style={{fontWeight: 600}}>Waiter: </span>{buyer.waiterType ? buyer.waiterType :
+                                        <span
+                                            style={{fontWeight: 600}}>Waiter: </span>{buyer.waiterType ? buyer.waiterType :
                                         <span style={{color: 'red'}}>non</span>}
                                     </Typography>
                                 </Grid>
                             </Grid>
                         </CardContent>
+
+                        {/*Dishes updater*/}
+                        {/*<h2>{BottleItem}</h2>*/}
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                                <TableHead>
+                                    <TableRow>
+                                        <StyledTableCell>Dish name</StyledTableCell>
+                                        <StyledTableCell align="right">Price</StyledTableCell>
+                                        <StyledTableCell align="right">Qty</StyledTableCell>
+                                        <StyledTableCell align="right">Amount</StyledTableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {(
+                                        <StyledTableRow >
+                                            {/*<StyledTableCell component="th" scope="row">
+
+                                            </StyledTableCell>*/}
+                                            <StyledTableCell align="left">{BottleItem}</StyledTableCell>
+
+                                        </StyledTableRow>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </Card>
                 </Grid>
-
             </Grid>
+
+
+
             <Grid container xs={12} sx={{padding: '10px', display: 'flex', gap: '10px', justifyContent: 'flex-end'}}>
 
 
@@ -224,13 +306,13 @@ const OrderEdit: React.FC<{
                                             ))}
                                         </Select>
                                     </FormControl>
-                                    <Button variant="contained" color="success">
+                                    <Button variant="contained" color="success" onClick={handleAddButtonClick}>
                                         Add
                                     </Button>
-
                                 </Stack>
-
                             </Grid>
+
+                            {/*--------------------------------------*/}
 
                             <Grid item xs={12}>
                                 <Stack direction="row" spacing={2} sx={{width: '100%'}}>
@@ -282,9 +364,7 @@ const OrderEdit: React.FC<{
                                     <Button variant="contained" color="success">
                                         Add
                                     </Button>
-
                                 </Stack>
-
                             </Grid>
                         </Grid>
 
