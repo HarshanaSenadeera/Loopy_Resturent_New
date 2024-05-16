@@ -248,7 +248,6 @@ export default function CreateOrder() {
                                                     <MenuItem value="Room">Room</MenuItem>
                                                 </Select>
                                             </FormControl>
-
                                             <FormControl sx={{m: 1, minWidth: 110}} size="small" fullWidth>
                                                 <InputLabel id="demo-select-small-label-2">
                                                     {Type === 'Room' ? 'Waiter' : 'Table'}
