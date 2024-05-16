@@ -20,12 +20,8 @@ import AddNewDish from "../AddDishes/AddDish";
 import SettingMain from "../Page/Settings/Setting";
 import {OrderProvider} from "../Page/Settings/OrderProvider";
 import OrderPage from "../../componenet/dishes/Card/CardDetaiils/OrderPage";
-<<<<<<< HEAD
-import KOMain from "../../componenet/KOT-BOT/KOMain";
-import {Invoice} from "../../componenet/Invoice/Invoice";
-=======
 
->>>>>>> 80ed05dc235816806fa9bdb670fe0922bf8f852b
+import {Invoice} from "../../componenet/Invoice/Invoice";
 
 
 export const MainContext = () => {
@@ -45,12 +41,7 @@ export const MainContext = () => {
                         <Route path="/addNewDish" Component={AddNewDish}></Route>
                         <Route path="/setting" Component={SettingMain}></Route>
                         <Route path="/order" Component={OrderPage}></Route>
-<<<<<<< HEAD
-                        <Route path="/KO" Component={KOMain}></Route>
                         <Route path="/invoice" Component={Invoice}></Route>
-=======
-
->>>>>>> 80ed05dc235816806fa9bdb670fe0922bf8f852b
                     </Routes>
                 </CartProvider>
             </OrderProvider>
