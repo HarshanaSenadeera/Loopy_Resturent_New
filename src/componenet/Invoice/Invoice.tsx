@@ -53,8 +53,14 @@ const rows = [
 
 export const Invoice = () => {
     return (
-        <Card sx={{padding: '20px', width: '750px',height:'500px',overflowY:'auto'}}>
-            <Grid container spacing={2}>
+        <Card sx={{padding: '20px', width:{
+            xs:200,
+                sm:300,
+                md:400,
+                lg:600,
+
+            },height:'500px',overflowY:'auto'}}>
+            <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }} >
                 <Grid item xs={8}>
                     <img src={logo} width='150px' height='150px'/>
                 </Grid>

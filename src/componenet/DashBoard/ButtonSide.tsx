@@ -34,13 +34,13 @@ export default function ButtonSizes() {
         <>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    <>
+
                         <Grid item xs={4}>
-                            <Box sx={{
+                            <Box  sx={{
                                 '& button': {
                                     m: 1,
-                                    width: '350px',
-                                    height: '150px',
+                                    height:150,
+                                    width:"100%",
                                     backgroundColor: '#ffffff',
                                     color: '#c52b18',
                                     borderRadius: '20px',
@@ -89,15 +89,15 @@ export default function ButtonSizes() {
                                 <CreateOrder  />
                             </Box>
                         </Modal>
-                    </>
+
 
 
                     <Grid item xs={4}>
                         <Box sx={{
                             '& button': {
                                 m: 1,
-                                width: '350px',
-                                height: '150px',
+                                height:150,
+                                width:"100%",
                                 backgroundColor: '#c52b18',
                                 color: 'white'
                             }
@@ -114,8 +114,8 @@ export default function ButtonSizes() {
                         <Box sx={{
                             '& button': {
                                 m: 1,
-                                width: '350px',
-                                height: '150px',
+                                height:150,
+                                width:"100%",
                                 backgroundColor: '#ffffff',
                                 color: '#c52b18',
                                 borderRadius: '20px',
