@@ -22,6 +22,8 @@ import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import { Link } from 'react-router-dom';
+import AddIcon from "@mui/icons-material/Add";
+import {Remove, RemoveCircle} from "@mui/icons-material";
 
 
 const Item = styled(Paper)(({theme}) => ({
@@ -147,6 +149,32 @@ const OrderEdit: React.FC<{
         },
     }));
 
+
+    const initialRows = [
+        { dishName: 'Dish 1', price: 10, qty: 1, amount: 10 },
+        { dishName: 'Dish 2', price: 15, qty: 1, amount: 15 },
+        // Add more rows as needed
+    ];
+
+
+
+
+    const handleIncrease = (index:any) => {
+        const newRows = [...rows];
+        newRows[index].qty += 1;
+        newRows[index].amount = newRows[index].qty * newRows[index].price;
+        setRows(newRows);
+    };
+
+    const handleDecrease = (index:any) => {
+        const newRows = [...rows];
+        if (newRows[index].qty > 1) {
+            newRows[index].qty -= 1;
+            newRows[index].amount = newRows[index].qty * newRows[index].price;
+            setRows(newRows);
+        }
+    };
+
     return (
         <Box sx={{overflowY: 'auto', borderRadius: '20px', maxHeight: 600}}>
             <Grid container spacing={3} sx={{display: 'flex', flexDirection: 'column'}}>
@@ -210,7 +238,7 @@ const OrderEdit: React.FC<{
                         </CardContent>
 
                         <TableContainer component={Paper}>
-                            <Table sx={{minWidth: 700}} aria-label="customized table">
+                            <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell>Dish name</StyledTableCell>
@@ -226,7 +254,15 @@ const OrderEdit: React.FC<{
                                                 {row.dishName}
                                             </StyledTableCell>
                                             <StyledTableCell align="right">{row.price}</StyledTableCell>
-                                            <StyledTableCell align="right">{row.qty}</StyledTableCell>
+                                            <StyledTableCell align="right">
+                                                <IconButton onClick={() => handleDecrease(index)} disabled={row.qty === 1}>
+                                                    <Remove />
+                                                </IconButton>
+                                                {row.qty}
+                                                <IconButton onClick={() => handleIncrease(index)}>
+                                                    <AddIcon />
+                                                </IconButton>
+                                            </StyledTableCell>
                                             <StyledTableCell align="right">{row.amount}</StyledTableCell>
                                         </StyledTableRow>
                                     ))}

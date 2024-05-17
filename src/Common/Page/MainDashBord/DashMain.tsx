@@ -1,13 +1,9 @@
-
 import React from "react";
 import Grid from "@mui/material/Grid";
 import {MainPieChart} from "../../../componenet/pieChart/MainPieChart";
-import ButtonSizes from "../../../componenet/DashBoard/ButtonSide";
-import ResponsiveGrid from "../../../componenet/DashBoard/NumCard";
-import NumCardTwo from "../../../componenet/DashBoard/NumCardTwo";
-
-
-
+import ButtonSizes from "../../../componenet/dashboard/ButtonSide";
+import ResponsiveGrid from "../../../componenet/dashboard/NumCard";
+import NumCardTwo from "../../../componenet/dashboard/NumCardTwo";
 
 
 export const DashMain = () => {
