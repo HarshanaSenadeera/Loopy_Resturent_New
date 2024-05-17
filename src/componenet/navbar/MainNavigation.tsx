@@ -38,7 +38,7 @@ const MainNavigation: React.FC = () => (
                 { text: 'Dashboard', to: '/' },
                 { text: 'Dishes', to: '/dish' },
                 { text: 'Byers', to: '/byer' },
-                { text: 'Invoices', to: '/invoice' },
+                { text: 'Invoices', to: '/invoiceData' },
                 { text: 'Reports', to: '/report' },
                 { text: 'Tables', to: '/orderTable' },
 
