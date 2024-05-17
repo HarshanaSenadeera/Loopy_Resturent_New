@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import pic from '../../images/burger-with-melted-cheese.jpg';
 import '../../css/card.css';
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+
 
 export default function ImgMediaCard() {
 

@@ -2,10 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 import {Modal} from "@mui/joy";
-import CreateOrder from "../../../componenet/CreateOrder/CreateOrder";
-import {Receipt} from "@mui/icons-material";
 import {useState} from "react";
 import {LocalPharmacyOutlined} from "@material-ui/icons";
 import AddNewDish from "../../AddDishes/AddDish";
@@ -19,7 +16,6 @@ import TableBody from "@mui/material/TableBody";
 import {useOrderContext} from "./OrderProvider";
 import TableContainer from "@mui/material/TableContainer";
 import OrderEdit from "./OrderEdit";
-import { Link } from "react-router-dom";
 
 
 export default function SettingMain() {
@@ -156,24 +152,12 @@ export default function SettingMain() {
                                         <TableRow>
                                             <TableCell>{buyer.OrderNum}</TableCell>
                                             <TableCell>{buyer.orderType}</TableCell>
-                                          {/*  <TableCell>{buyer.type1}</TableCell>
-                                            <TableCell>{buyer.tableOrRoomNumber}</TableCell>
-                                                    <TableCell>{buyer.address}</TableCell>
-                                                    <TableCell>{buyer.email}</TableCell>
-                                                    <TableCell>{buyer.phone}</TableCell>
-*/}
-
                                             <TableCell>{buyer.type}</TableCell>
-                                            <TableCell>
-
-                                                {buyer.type === 'KOT' && buyer.item}
-                                                {buyer.type === 'BOT' && buyer.item2}
+                                            <TableCell>{buyer.type === 'KOT' && buyer.item}{buyer.type === 'BOT' && buyer.item2}
                                                 {buyer.type === 'KOT and BOT' && `${buyer.item} and ${buyer.item2}`}
                                             </TableCell>
                                             <TableCell>
-
                                                 <Button variant="outlined" color="error" sx={{ borderRadius: '20px' }} >pending</Button>
-
                                             </TableCell>
                                             <TableCell>
                                                 <Button variant="contained"    sx={{ borderRadius: '10px',width:'130px',hieght:'20px',fontSize:'12px'}}  onClick={() => handleOpen1(buyer)}>View Details</Button>

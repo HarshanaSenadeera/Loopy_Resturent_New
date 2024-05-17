@@ -1,9 +1,7 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
-import {Form} from "react-router-dom";
 import {Stack} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
@@ -11,9 +9,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import {InputAdornment} from "@material-ui/core";
 import {VisibilityOff} from "@material-ui/icons";
 import {Visibility} from "@mui/icons-material";
-
 import avetar from "../../images/Loopy_logo_new-removebg-preview.png"
-import Button from "@mui/material/Button";
 import CircularIntegration from "../AcceptButton/AceptButton";
 
 const ForgotPass: React.FC = () => {

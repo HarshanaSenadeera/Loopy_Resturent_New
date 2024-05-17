@@ -7,9 +7,7 @@ import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { ArrowDown as ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { ArrowUp as ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
-import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
 import PaidIcon from '@mui/icons-material/Paid';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 
 export interface DailyIncomeProps {

@@ -8,10 +8,7 @@ import Typography from '@mui/material/Typography';
 import { ArrowDown as ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
 import { ArrowUp as ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+
 
 export interface DailyIncomeProps {
   diff?: number;
