@@ -357,11 +357,11 @@ export default function CreateOrder() {
                                             <Select value={buyerDetails.item} label="Item" name="item"
                                                     onChange={handleSelectChange} variant="outlined"
                                                     disabled={selectedValue === 'BOT'}>
-                                                <MenuItem value="Milo">Milo</MenuItem>
-                                                <MenuItem value="Cocacola">Cocacola</MenuItem>
-                                                <MenuItem value="Fanta">Fanta</MenuItem>
-                                                <MenuItem value="Potelo">Potelo</MenuItem>
-                                                <MenuItem value="Sprit">Sprit</MenuItem>
+                                                <MenuItem value="Checken">Checken</MenuItem>
+                                                <MenuItem value="Pasta">Pasta</MenuItem>
+                                                <MenuItem value="Kottu">Kottu</MenuItem>
+                                                <MenuItem value="Nasiguraan">Nasiguraan</MenuItem>
+                                                <MenuItem value="Devel">Devel</MenuItem>
                                             </Select>
                                         </FormControl>
                                             )}
