@@ -11,6 +11,8 @@ import pic from "../../../../images/Kottu.jpg";
 import pic2 from "../../../../images/kottu beef.png";
 import { useCart } from "../CartProvider";
 import CardDetails from "../../Card/CardDetaiils/CardDetails";
+import {KeyboardDoubleArrowRightTwoTone} from "@mui/icons-material";
+import {Link as RouterLink} from "react-router-dom";
 
 // Define the type for the item object
 interface DishItem {
@@ -28,6 +30,15 @@ const dishesData: DishItem[] = [
     { id: 4, title: 'Chicken Kottu', price: 700, pic: pic, quantity: 0 },
     { id: 5, title: 'Dolphin Kottu', price: 750, pic: pic, quantity: 0 },
     { id: 6, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 7, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 8, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 9, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 10, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 11, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 12, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 13, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 14, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
+    { id: 15, title: 'Beef Kottu', price: 750, pic: pic2, quantity: 0 },
 ];
 
 export const ColdDishes = () => {
@@ -56,9 +67,9 @@ export const ColdDishes = () => {
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
                     <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
-
                 </Grid>
             </Grid>
+
             <Grid container spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
                 {dishesData.map((dish, index) => (
                     <Grid item xs={5} key={index}>
@@ -92,7 +103,24 @@ export const ColdDishes = () => {
                     </Grid>
                 ))}
             </Grid>
+
             {showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}
+
+            {/* Next Button */}
+            <Grid item xs={12} sx={{ position: 'sticky', bottom: 0, right: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 2, paddingBottom: 4 }}>
+                <Button
+                    component={RouterLink}
+                    to="/dish"
+                    variant="contained"
+                    color="primary"
+                    sx={{ minWidth: '48px', width: '48px', height: '48px', borderRadius: '50%', fontSize: '1rem' }}
+                >
+                    <KeyboardDoubleArrowRightTwoTone />
+                </Button>
+            </Grid>
+
+
         </Grid>
+
     );
 };

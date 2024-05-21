@@ -16,6 +16,8 @@ import EditDish from "../../../EditDish/EditDish";
 import {Close} from "@material-ui/icons";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
+import {KeyboardDoubleArrowRightTwoTone} from "@mui/icons-material";
+import {Link as RouterLink} from "react-router-dom";
 
 // Define the type for the item object
 interface DishItem {
@@ -127,6 +129,18 @@ export const HotDishes = () => {
                 ))}
             </Grid>
             {showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}
+
+            <Grid item xs={12} sx={{ position: 'sticky', bottom: 0, right: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 2, paddingBottom: 4 }}>
+                <Button
+                    component={RouterLink}
+                    to="/dish"
+                    variant="contained"
+                    color="primary"
+                    sx={{ minWidth: '48px', width: '48px', height: '48px', borderRadius: '50%', fontSize: '1rem' }}
+                >
+                    <KeyboardDoubleArrowRightTwoTone />
+                </Button>
+            </Grid>
         </Grid>
     );
 };

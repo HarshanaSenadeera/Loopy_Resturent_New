@@ -62,3 +62,5 @@ export const Cart: React.FC<{ itemCount: number; toggleCartDetails: () => void }
         </Box>
     );
 };
+
+export default Cart;

@@ -11,7 +11,9 @@ import pic from "../../../../images/Kottu.jpg";
 import pic2 from "../../../../images/kottu beef.png";
 import { useCart } from "../CartProvider";
 import CardDetails from "../../Card/CardDetaiils/CardDetails";
-
+import {KeyboardDoubleArrowRightTwoTone} from "@mui/icons-material";
+import {Link} from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 // Define the type for the item object
 interface DishItem {
     id: number;
@@ -56,7 +58,6 @@ export const SoupDishes = () => {
             <Grid item xs={12}>
                 <Grid container justifyContent="flex-end">
                     <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
-
                 </Grid>
             </Grid>
             <Grid container spacing={2} rowSpacing={3} columns={{ xs: 2, md: 15, sm: 2 }}>
@@ -93,6 +94,18 @@ export const SoupDishes = () => {
                 ))}
             </Grid>
             {showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}
+
+            <Grid item xs={12} sx={{ position: 'sticky', bottom: 0, right: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 2, paddingBottom: 4 }}>
+                <Button
+                    component={RouterLink}
+                    to="/dish"
+                    variant="contained"
+                    color="primary"
+                    sx={{ minWidth: '48px', width: '48px', height: '48px', borderRadius: '50%', fontSize: '1rem' }}
+                >
+                    <KeyboardDoubleArrowRightTwoTone />
+                </Button>
+            </Grid>
         </Grid>
     );
 };

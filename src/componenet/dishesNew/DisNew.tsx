@@ -13,6 +13,11 @@ import Tacos from "../../images/Tortilla.jpg";
 import Ramen from "../../images/Ramen.jpg";
 import Berger from "../../images/burger-with-melted-cheese.jpg";
 import {Link, To} from "react-router-dom";
+import {Cart} from "../dishes/Card/Cart";
+import {CartProvider, DishItem, useCart} from "../dishes/SubDishes/CartProvider";
+import Grid from "@mui/material/Grid";
+import {useState} from "react";
+import CardDetails from "../dishes/Card/CardDetaiils/CardDetails";
 
 
 const images = [
@@ -154,43 +159,73 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
+
+
 export default function ButtonBaseDemo() {
 
+  const { cartItems, setCartItems } = useCart(); // Destructure cartItems and setCartItems from useCart hook
+  const [selectedDish, setSelectedDish] = useState<DishItem | null>(null);
+  const [showCartDetails, setShowCartDetails] = useState(false);
+
+
+  const addToCart = (item: DishItem) => {
+    setSelectedDish(item);
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCartItems(
+          cartItems.map((cartItem) =>
+              cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+          )
+      );
+    } else {
+      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+    }
+  };
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-      {images.map((image) => (
 
-          <ImageButton
-          focusRipple
-          key={image.title}
-          style={{
-            width: image.width,
-          }}
-        >
-          <ImageSrc  style={{ backgroundImage: `url(${image.url})` }} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              sx={{
-                position: 'relative',
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-              }}
-            >
-              <Link to={image.link}  style={{fontSize:'20px' ,fontWeight:'bold',color:'white'}}>
-              {image.title}
-              </Link>
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
-          </Image>
+      <Box sx={{ position: 'relative', minWidth: 300, width: '100%' }}>
+        {/* Cart icon positioned absolutely at the top right corner */}
+        <Box sx={{ position: 'relative', top: -40, left: 1070, padding: 2 , bottom:60}}>
+          <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
+        </Box>
 
-        </ImageButton>
+        <Box sx={{ position: 'absolute', minWidth: 300, width: '100%' , top: -80}}>
+          {showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}
+        </Box>
 
-      ))}
-    </Box>
+
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+          {images.map((image) => (
+              <ImageButton
+                  focusRipple
+                  key={image.title}
+                  style={{
+                    width: image.width,
+                  }}
+              >
+                <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                <ImageBackdrop className="MuiImageBackdrop-root" />
+                <Image>
+                  <Typography
+                      component="span"
+                      variant="subtitle1"
+                      color="inherit"
+                      sx={{
+                        position: 'relative',
+                        p: 4,
+                        pt: 2,
+                        pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      }}
+                  >
+                    <Link to={image.link} style={{ fontSize: '20px', fontWeight: 'bold', color: 'white' }}>
+                      {image.title}
+                    </Link>
+                    <ImageMarked className="MuiImageMarked-root" />
+                  </Typography>
+                </Image>
+              </ImageButton>
+          ))}
+        </Box>
+      </Box>
   );
 }
