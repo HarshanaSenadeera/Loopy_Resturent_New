@@ -11,7 +11,8 @@ import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import {styled} from '@mui/material/styles';
 import TableCell, {tableCellClasses} from '@mui/material/TableCell';
-
+import Button from "@mui/material/Button";
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
@@ -149,6 +150,16 @@ export const Invoice = () => {
                 </Grid>
 
             </Grid>
+
+            <Button
+                component={RouterLink}
+                to="/payment"
+                variant="contained"
+                color="primary"
+                sx={{ minWidth: '48px', width: '180px', height: '48px', fontSize: '1rem' }}
+            >
+                Pay Now
+            </Button>
         </Card>
 
     );

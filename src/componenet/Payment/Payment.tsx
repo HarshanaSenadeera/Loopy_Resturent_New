@@ -48,7 +48,7 @@ const Payment = () => {
     return (
         <Container maxWidth="sm">
             <Typography variant="h4" gutterBottom>
-                Payment Method
+
             </Typography>
             <form>
                 <Card
@@ -194,7 +194,7 @@ const Payment = () => {
                         />
                         <CardActions sx={{ gridColumn: '1/-1' }}>
                             <Button variant="contained" color="primary">
-                                Add card
+                                Pay Bill
                             </Button>
                         </CardActions>
                     </CardContent>

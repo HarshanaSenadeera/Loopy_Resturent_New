@@ -56,11 +56,19 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
     const navigate = useNavigate(); // Initialize useNavigate hook
 
 
-    const handleOrder = () => {
+    const handlePending = () => {
         // Ensure cartItems and totalPrice are defined before navigating
         if (dishes.length > 0 && totalPrice > 0) {
             // Navigate to the order page with cart items and total price as route state
-            navigate('/order', { state: { cartItems: dishes, totalPrice: totalPrice } });
+            navigate('/invoiceData', { state: { cartItems: dishes, totalPrice: totalPrice } });
+        }
+    };
+
+    const handlePayNow = () => {
+        // Ensure cartItems and totalPrice are defined before navigating
+        if (dishes.length > 0 && totalPrice > 0) {
+            // Navigate to the order page with cart items and total price as route state
+            navigate('/payment', { state: { cartItems: dishes, totalPrice: totalPrice } });
         }
     };
 
@@ -109,11 +117,16 @@ const CardDetails: React.FC<Props> = ({ dishes }) => {
                 </Card>
             ))}
 
-            <Box sx={{display:'flex',justifyContent:'center',justifyItems:'center',paddingTop:'20px',paddingBottom:'20px'}}>
-                <Button variant="contained" onClick={handleOrder} >
-                    Order
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '20px', paddingBottom: '20px' }}>
+                <Button variant="contained" onClick={handlePending} sx={{ marginRight: '10px' }}>
+                    Pending
+                </Button>
+                <Button variant="contained" onClick={handlePayNow}>
+                    Pay Now
                 </Button>
             </Box>
+
+
 
         </Card>
     );
