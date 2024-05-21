@@ -93,7 +93,7 @@ export const SoupDishes = () => {
                     </Grid>
                 ))}
             </Grid>
-            {showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}
+            {/*{showCartDetails && cartItems.length > 0 && <CardDetails dishes={cartItems} />}*/}
 
             <Grid item xs={12} sx={{ position: 'sticky', bottom: 0, right: 0, display: 'flex', justifyContent: 'flex-end', paddingRight: 2, paddingBottom: 4 }}>
                 <Button

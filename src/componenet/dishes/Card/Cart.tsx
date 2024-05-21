@@ -39,7 +39,7 @@ export const Cart: React.FC<{ itemCount: number; dishes: DishItem[] }> = ({ item
     );
 };
 */
-export const Cart: React.FC<{ itemCount: number; toggleCartDetails: () => void }> = ({ itemCount, toggleCartDetails }) => {
+export const Cart: React.FC<{ itemCount: number; toggleCartDetails: () => void }> = ({itemCount, toggleCartDetails}) => {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <Button onClick={toggleCartDetails}>

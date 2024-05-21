@@ -185,7 +185,7 @@ export default function ButtonBaseDemo() {
 
       <Box sx={{ position: 'relative', minWidth: 300, width: '100%' }}>
         {/* Cart icon positioned absolutely at the top right corner */}
-        <Box sx={{ position: 'relative', top: -40, left: 1070, padding: 2 , bottom:60}}>
+        <Box sx={{ position: 'relative', top: 0, left: 1070, padding: 2}}>
           <Cart itemCount={cartItems.length} toggleCartDetails={() => setShowCartDetails(!showCartDetails)} />
         </Box>
 
