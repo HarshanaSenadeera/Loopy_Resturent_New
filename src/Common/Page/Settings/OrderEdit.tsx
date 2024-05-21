@@ -237,7 +237,7 @@ const OrderEdit: React.FC<{
                             </Grid>
                         </CardContent>
 
-                        <TableContainer component={Paper}>
+                        {/*<TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
@@ -268,7 +268,7 @@ const OrderEdit: React.FC<{
                                     ))}
                                 </TableBody>
                             </Table>
-                        </TableContainer>
+                        </TableContainer>*/}
                     </Card>
                 </Grid>
             </Grid>
@@ -280,9 +280,9 @@ const OrderEdit: React.FC<{
                             Next
                         </Button>
                     </Link>
-                    <Button variant="contained" onClick={handleExpandClick}>
+                    {/*<Button variant="contained" onClick={handleExpandClick}>
                         {expanded ? 'Hide' : 'Add Item'}
-                    </Button>
+                    </Button>*/}
                 </Grid>
 
                 <Collapse in={expanded}>
