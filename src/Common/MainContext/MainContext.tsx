@@ -15,6 +15,7 @@ import {OrderProvider} from "../Page/Settings/OrderProvider";
 import OrderPage from "../../componenet/dishes/Card/CardDetaiils/OrderPage";
 import {Invoice} from "../../componenet/Invoice/Invoice";
 import InvoiceData from "../../componenet/Invoice/InvoiceData";
+import payment from "../../componenet/Payment/Payment";
 
 export const MainContext = () => {
     return (
@@ -35,8 +36,7 @@ export const MainContext = () => {
                         <Route path="/order" Component={OrderPage}></Route>
                         <Route path="/invoice" Component={Invoice}></Route>
                         <Route path="/invoiceData" Component={InvoiceData}></Route>
-
-
+                        <Route path="/payment" Component={payment}></Route>
                     </Routes>
                 </CartProvider>
             </OrderProvider>

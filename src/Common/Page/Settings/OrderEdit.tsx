@@ -275,7 +275,7 @@ const OrderEdit: React.FC<{
 
             <Grid container xs={12} sx={{padding: '10px', display: 'flex', gap: '10px', justifyContent: 'flex-end'}}>
                 <Grid container xs={12} sx={{display: 'flex', justifyContent: 'flex-end',gap:'10px'}}>
-                    <Link to='/invoiceData'>
+                    <Link to='/dish'>
                         <Button variant="contained">
                             Next
                         </Button>
